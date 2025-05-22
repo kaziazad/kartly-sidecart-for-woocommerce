@@ -21,7 +21,7 @@
  }
 
 
-
+// dependency_check 
 function dependency_check(){
     if( ! class_exists('WooCommerce')){
         deactivate_plugins( plugin_basename(__FILE__) );
