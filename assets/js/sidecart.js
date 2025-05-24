@@ -34,7 +34,7 @@
 
 
 
-                        const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); // <-- replace with your actual sidecart container ID or class
+                        const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); 
         if(sidecartContainer && data.data.cart_html) {
             sidecartContainer.innerHTML = data.data.cart_html;
         }
