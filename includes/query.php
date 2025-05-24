@@ -46,11 +46,12 @@ class Query{
         // var_dump($cart_items);
         echo "</pre>";
             foreach($cart_items as $cart_item){
+                $products = $cart_item['data'];
                 $product_id = $cart_item['product_id'];
                 $product_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'single-post-thumbnail' );
                 $product_name = get_the_title($product_id);
                 $quantity = $cart_item['quantity'];
-                $price = $cart_item['regular_price'];
+                $price =  $products->get_price();
 
 
         ?>
@@ -58,7 +59,7 @@ class Query{
                 <td class="close_btn_ws"><i class="fa-solid fa-x"></i></td>
                 <td class="item_image_ws"><img src="<?php  echo $product_image[0]; ?>"></td>
                 <td class="item_title_ws"><?php echo $product_name; ?></td>
-                <td class="item_quantity_ws"><?php echo $price.' '; ?><i class="fa-solid fa-x"></i><input 
+                <td class="item_quantity_wrapper_ws"><?php echo wc_price( $price ).' '; ?><i class="fa-solid fa-x"></i><input 
   type="number" 
   class="item_quantity_ws" 
   data-cart-key="<?php echo esc_attr($cart_item_key); ?>" 

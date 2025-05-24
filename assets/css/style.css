@@ -1,6 +1,6 @@
 
 .wscart-side-cart-body{
-    position: fixed;
+    position: absolute;
     background: rgb(242, 238, 238);
     width: 350px;
     /* height: 80vh; */
@@ -41,25 +41,48 @@
    color: #fff; 
 }
 
-td.item_image_ws {
-    width: 50px;
-    max-height: 50px;
+.close_btn_ws{
+    width: 15px;
 }
 
-td.item_quantity_ws {
+
+td.item_image_ws {
+    width: 30px;
+    max-height: 30px;
+}
+
+td.item_image_ws img {
+    width: 30px;
+    height: 30px;
+}
+
+.item_title_ws{
+    width: 150px;
+}
+
+
+
+td.item_quantity_wrapper_ws {
     display: flex;
     align-items: center;
     gap: 3px;
+    width: 30px;
 }
 
-input#item_quantity_ws {
+input.item_quantity_ws {
     padding: 2px;
-    width: 45px;
+    width: 33px;
     height: 25px;
     font-size: 12px;
 }
 
+
 .cart-table{
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.item_total_ws{
+    width: 100px;
+    text-align: right;
 }
