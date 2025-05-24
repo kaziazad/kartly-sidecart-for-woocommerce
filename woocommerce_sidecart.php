@@ -117,10 +117,12 @@ register_activation_hook( __FILE__, 'dependency_check');
         require_once WOOCOMMERCE_SIDECART_PATH.'includes/side_cart_body.php'; 
         require_once WOOCOMMERCE_SIDECART_PATH.'includes/enqueue.php'; 
         require_once WOOCOMMERCE_SIDECART_PATH.'includes/query.php'; 
+        require_once WOOCOMMERCE_SIDECART_PATH.'includes/ajax.php'; 
 
         new WSCART\Side_Cart_Body(); 
         new WSCART\enqueue();
         new WSCART\Query();
+        new WSCART\Ajax();
     }
 
 

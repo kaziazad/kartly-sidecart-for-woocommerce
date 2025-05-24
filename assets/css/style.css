@@ -2,7 +2,7 @@
 .wscart-side-cart-body{
     position: absolute;
     background: rgb(242, 238, 238);
-    width: 350px;
+    width: 650px;
     /* height: 80vh; */
     top:100px; 
     right:0;
@@ -66,14 +66,15 @@ td.item_quantity_wrapper_ws {
     display: flex;
     align-items: center;
     gap: 3px;
-    width: 30px;
+    width: 100px;
 }
 
 input.item_quantity_ws {
-    padding: 2px;
-    width: 33px;
+    padding: 2px !important;
+    width: 40px !important;
     height: 25px;
     font-size: 12px;
+    text-align: right;
 }
 
 
