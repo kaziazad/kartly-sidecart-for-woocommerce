@@ -22,6 +22,10 @@ class Ajax{
 
         add_action('wp_ajax_update_product_quantity', array($this, "update_product_quantity"));  
         add_action('wp_ajax_nopriv_update_product_quantity', array($this, "update_product_quantity"));  
+
+
+        add_action('wp_ajax_get_updated_side_cart', array($this, "get_updated_side_cart"));  
+        add_action('wp_ajax_nopriv_get_updated_side_cart', array($this, "get_updated_side_cart"));  
        
     }
 
@@ -84,9 +88,21 @@ class Ajax{
         $product_id = intval($_POST['product_id']); 
         $quantity = intval($_POST['quantity']);
 
-
+        if(!$product_id || $quantity < 0){
+            wp_send_json_error(['message' => 'Invalid product or quantity.']);
+        }
         
-        ob_start(); ?>
+        foreach(WC()->cart->get_cart() as $cart_item_key => $cart_item){
+            if($cart_item['product_id'] == $product_id){
+                if($quantity == 0){
+                    WC()->cart->remove_cart_item($cart_item_key); 
+                }else{
+                    WC()->cart->set_quantity($cart_item_key, $quantity); 
+                }
+
+                WC()->cart->calculate_totals(); 
+
+                ob_start(); ?>
 
              <div class="wscart-title" style="background-color:red;">
             <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
@@ -94,20 +110,47 @@ class Ajax{
             <div class="cart-items-container"> 
                 <?php
                Query::cart_query();
+                ?>
+            </div> 
+            <?php
+        $cart_html = ob_get_clean();
+
+           wp_send_json_success([
+            'message' => 'Cart Updated',
+            'cart_html' => $cart_html
+            ]);
 
 
+            }
+        }
+
+
+       wp_send_json_error(['message' => 'Product not found in cart.']);
+
+    }
+
+
+    function get_updated_side_cart() {
+
+     check_ajax_referer('ws_cart_nonce', 'security');
+
+
+    ob_start(); ?>
+
+        <div class="wscart-title" style="background-color:red;">
+            <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
+            </div>
+            <div class="cart-items-container"> 
+                <?php
+               Query::cart_query();
                 ?>
             </div> 
             <?php
         $cart_html = ob_get_clean();
 
 
-         wp_send_json_success(['cart_html' => $cart_html]);
-
-
-    }
-
-
+    wp_send_json_success(['cart_html' => $cart_html]);
+}
 
 
 

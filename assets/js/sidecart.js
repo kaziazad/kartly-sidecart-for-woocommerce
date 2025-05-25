@@ -11,6 +11,49 @@
 // };
 
 
+// after add to cart action 
+jQuery( document ).ready(function() {
+    
+    jQuery(document.body).on('added_to_cart', function(event, fragments, cart_hash, $button) {
+        // console.log('✅ Product added to cart via AJAX');
+
+        // Update sidecart
+        refreshSideCart();
+    });
+
+});
+
+
+function refreshSideCart() {
+    const formData = new FormData();
+    formData.append('action', 'get_updated_side_cart');
+    formData.append('security', WSCartAjax.nonce);
+
+    fetch(WSCartAjax.ajax_url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('Updated cart:', data.data);
+
+      
+            const sidecartContainer = document.querySelector('#wscart-side-cart-body-id');
+            if (sidecartContainer && data.data.cart_html) {
+                sidecartContainer.innerHTML = data.data.cart_html;
+            }
+        
+    })
+    .catch(error => {
+        console.error('Error fetching updated cart:', error);
+    });
+}
+    
+
+
+// Delete Item from cart 
+
         function deleteItem(param) {
 
             // alert(param);
@@ -32,12 +75,11 @@
                 if(data.success){
                     console.log('success', data.data); 
 
+                    const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); 
 
-
-                        const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); 
-        if(sidecartContainer && data.data.cart_html) {
-            sidecartContainer.innerHTML = data.data.cart_html;
-        }
+                if(sidecartContainer && data.data.cart_html) {
+                    sidecartContainer.innerHTML = data.data.cart_html;
+                }
 
 
 
@@ -52,7 +94,7 @@
 
 
 
-
+// Quantity and price total adjust  
 
     function itemQuantityUpdate(params) {
        const quantity = parseInt(params.value, 10);
