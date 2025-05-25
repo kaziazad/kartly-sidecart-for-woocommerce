@@ -87,3 +87,7 @@ input.item_quantity_ws {
     width: 100px;
     text-align: right;
 }
+
+.total-price_ws td{
+    text-align: right;
+}

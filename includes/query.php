@@ -69,13 +69,13 @@ class Query{
   type="number" 
   class="item_quantity_ws" 
   data-cart-key="<?php echo esc_attr($cart_item_key); ?>" 
-  value="<?php echo esc_attr($quantity); ?>"></td>
+  value="<?php echo esc_attr($quantity); ?>" onchange="itemQuantityUpdate(this)" data-product-id = "<?php echo esc_attr($product_id); ?>"></td>
                 <td class="item_total_ws"><?php echo $quantity*$price; ?></td>
             </tr>
         <?php
         }
         ?>
-            <tr>
+            <tr class="total-price_ws">
                 <td></td>
                 <td></td>
                 <td></td>
