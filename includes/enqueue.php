@@ -16,7 +16,7 @@ class Enqueue {
 
     public function side_cart_custom_styles() {
         wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
-        wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . '/assets/css/style.css');
+        wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . 'assets/css/style.css');
 
         wp_enqueue_script('jquery');
 

@@ -12,10 +12,10 @@
 
 
 // after add to cart action 
-jQuery( document ).ready(function() {
+jQuery( document ).ready(function($) {
     
     jQuery(document.body).on('added_to_cart', function(event, fragments, cart_hash, $button) {
-        // console.log('✅ Product added to cart via AJAX');
+        console.log('✅ Product added to cart via AJAX');
 
         // Update sidecart
         refreshSideCart();
@@ -175,6 +175,7 @@ function refreshSideCart() {
 
       },
       success: function(response) {
+        console.log('kaj hoice');
         // Optionally refresh fragments or cart total
         $(document.body).trigger('updated_cart_totals');
       }

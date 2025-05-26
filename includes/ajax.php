@@ -178,7 +178,20 @@ public function update_cart_item_quantity(){
         // wc_get_template('cart/mini-cart.php'); // optionally refresh the mini-cart
     }
 
-    wp_die();
+     ob_start(); ?>
+
+        <div class="wscart-title" style="background-color:red;">
+            <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
+            </div>
+            <div class="cart-items-container"> 
+                <?php
+               Query::cart_query();
+                ?>
+            </div> 
+            <?php
+        $cart_html = ob_get_clean();
+
+   wp_send_json_success(['cart_html' => $cart_html]);
 }
 
 

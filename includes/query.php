@@ -88,6 +88,7 @@ class Query{
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <td>Total</td>
                 <td><?php echo wp_kses_post( WC()->cart->get_total() ); ?></td>
            </tr>
