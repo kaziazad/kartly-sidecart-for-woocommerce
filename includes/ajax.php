@@ -85,8 +85,14 @@ class Ajax{
 
         check_ajax_referer('ws_cart_nonce', 'security');
 
-        $product_id = intval($_POST['product_id']); 
-        $quantity = intval($_POST['quantity']);
+        if(isset( $_POST['product_id'])){
+                $product_id = intval($_POST['product_id']); 
+        }
+        
+        if(isset($_POST['quantity'])){
+              $quantity = intval($_POST['quantity']); 
+        }
+     
 
         if(!$product_id || $quantity < 0){
             wp_send_json_error(['message' => 'Invalid product or quantity.']);

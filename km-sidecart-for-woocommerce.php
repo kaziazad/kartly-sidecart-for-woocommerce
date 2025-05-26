@@ -10,7 +10,7 @@
  * Author URI:        https://kazimahmud.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       woocommerce-sidecart
+ * Text Domain:       km-sidecart-for-woocommerce
  */
 
 
@@ -90,8 +90,15 @@ register_activation_hook( __FILE__, 'dependency_check');
     public function update_cart_quantity() {
         check_ajax_referer('ws_cart_nonce', 'nonce');
 
-        $cart_key = sanitize_text_field($_POST['cart_key']);
-        $quantity = max(0, intval($_POST['quantity']));
+        if(isset($_POST['cart_key'])){
+            $cart_key = sanitize_text_field( wp_unslash($_POST['cart_key']));
+        }
+        
+        if(isset($_POST['quantity'])){
+            $quantity = max(0, intval($_POST['quantity']));
+        }
+
+        
     
         if (!WC()->cart || !$cart_key) {
             wp_send_json_error('Invalid cart');
