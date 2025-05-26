@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Woocommerce Sidecart 
+ * Plugin Name:       KM Sidecart for Woocommerce 
  * Plugin URI:        https://kazimahmud.com/
  * Description:       Woocommerce custom Side Cart
  * Version:           1.10.3
@@ -10,8 +10,7 @@
  * Author URI:        https://kazimahmud.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       woocommerce_sidecart
- * Domain Path:       /languages
+ * Text Domain:       woocommerce-sidecart
  */
 
 
