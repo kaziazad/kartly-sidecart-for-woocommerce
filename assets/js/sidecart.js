@@ -144,3 +144,40 @@ function refreshSideCart() {
 
     }
        
+// quantity js 
+
+  jQuery(document).ready(function($) {
+  $('.quantity-selector').on('click', '.quantity-button', function() {
+    const $container = $(this).closest('.quantity-selector');
+    const $display = $container.find('.quantity-number');
+    const cartItemKey = $container.data('cart-item-key');
+    const security = WSCartAjax.nonce;
+    let quantity = parseInt($display.text());
+
+    if ($(this).hasClass('plus')) {
+      quantity++;
+    } else if ($(this).hasClass('minus') && quantity > 1) {
+      quantity--;
+    }
+
+    $display.text(quantity);
+
+    // Ajax call to update cart item
+    $.ajax({
+      type: 'POST',
+      url: WSCartAjax.ajax_url,
+      data: {
+        action: 'update_cart_item_quantity',
+        cart_item_key: cartItemKey,
+        credentials: 'same-origin',
+        quantity: quantity, 
+        security: security
+
+      },
+      success: function(response) {
+        // Optionally refresh fragments or cart total
+        $(document.body).trigger('updated_cart_totals');
+      }
+    });
+  });
+});

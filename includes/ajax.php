@@ -26,6 +26,12 @@ class Ajax{
 
         add_action('wp_ajax_get_updated_side_cart', array($this, "get_updated_side_cart"));  
         add_action('wp_ajax_nopriv_get_updated_side_cart', array($this, "get_updated_side_cart"));  
+
+
+        
+        add_action('wp_ajax_update_cart_item_quantity', array($this, "update_cart_item_quantity"));  
+        add_action('wp_ajax_nopriv_update_cart_item_quantity', array($this, "update_cart_item_quantity"));  
+
        
     }
 
@@ -158,6 +164,22 @@ class Ajax{
     wp_send_json_success(['cart_html' => $cart_html]);
 }
 
+
+public function update_cart_item_quantity(){
+
+    check_ajax_referer('ws_cart_nonce', 'security');
+
+    $cart_item_key = sanitize_text_field($_POST['cart_item_key']);
+    $quantity = intval($_POST['quantity']);
+
+    if ($cart_item_key && $quantity >= 1) {
+        WC()->cart->set_quantity($cart_item_key, $quantity, true);
+        WC()->cart->calculate_totals();
+        // wc_get_template('cart/mini-cart.php'); // optionally refresh the mini-cart
+    }
+
+    wp_die();
+}
 
 
 }

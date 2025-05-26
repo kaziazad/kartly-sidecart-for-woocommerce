@@ -70,6 +70,15 @@ class Query{
   class="item_quantity_ws" 
   data-cart-key="<?php echo esc_attr($cart_item_key); ?>" 
   value="<?php echo esc_attr($quantity); ?>" onchange="itemQuantityUpdate(this)" data-product-id = "<?php echo esc_attr($product_id); ?>"></td>
+
+                <td class="">
+                <div class="quantity-selector" data-cart-item-key="<?php echo esc_attr( $cart_item_key ); ?>">
+                <button class="quantity-button minus">−</button>
+                <div class="quantity-number"><?php echo esc_html( $cart_item['quantity'] ); ?></div>
+                <button class="quantity-button plus">+</button>
+                </div>
+
+                </td>
                 <td class="item_total_ws"><?php echo wp_kses_post( wc_price( floatval( $quantity*$price ) ) ); ?></td>
             </tr>
         <?php
