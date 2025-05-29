@@ -12,10 +12,10 @@
 
 
 // after add to cart action 
-jQuery( document ).ready(function() {
+jQuery( document ).ready(function($) {
     
     jQuery(document.body).on('added_to_cart', function(event, fragments, cart_hash, $button) {
-        // console.log('✅ Product added to cart via AJAX');
+        console.log('✅ Product added to cart via AJAX');
 
         // Update sidecart
         refreshSideCart();
@@ -39,7 +39,7 @@ function refreshSideCart() {
         console.log('Updated cart:', data.data);
 
       
-            const sidecartContainer = document.querySelector('#wscart-side-cart-body-id');
+            const sidecartContainer = document.querySelector('#cart-items-container-id');
             if (sidecartContainer && data.data.cart_html) {
                 sidecartContainer.innerHTML = data.data.cart_html;
             }
@@ -75,7 +75,7 @@ function refreshSideCart() {
                 if(data.success){
                     console.log('success', data.data); 
 
-                    const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); 
+                    const sidecartContainer = document.querySelector('#cart-items-container-id'); 
 
                 if(sidecartContainer && data.data.cart_html) {
                     sidecartContainer.innerHTML = data.data.cart_html;
@@ -94,90 +94,67 @@ function refreshSideCart() {
 
 
 
-// Quantity and price total adjust  
+    // Item quantity change and update 
 
-    function itemQuantityUpdate(params) {
-       const quantity = parseInt(params.value, 10);
-       const productId = params.getAttribute('data-product-id');
+  document.addEventListener('DOMContentLoaded', function () {
+  const sideCartContainer = document.getElementById('wscart-side-cart-body-id');
 
-       console.log("Quantity:", quantity);
-       console.log("Product ID:", productId);
+  sideCartContainer.addEventListener('click', function (event) {
+    event.preventDefault();
+    const button = event.target.closest('.quantity-button');
+    if (!button) return;
 
-       const itemQuantityInfo = new FormData(); 
-
-       itemQuantityInfo.append('action', 'update_product_quantity'); 
-       itemQuantityInfo.append('product_id', productId);
-       itemQuantityInfo.append('quantity', quantity);
-       itemQuantityInfo.append('security', WSCartAjax.nonce);
-
-       fetch(WSCartAjax.ajax_url,{
-        method:'POST', 
-        credentials: 'same-origin', 
-        body: itemQuantityInfo
-       })
-       .then(response => response.json())
-       .then(data => {
-
-        if(data.success){
-            console.log('Server Response', data.data);
-
-            const sidecartContainer = document.querySelector('#wscart-side-cart-body-id'); 
-        if(sidecartContainer && data.data.cart_html) {
-            sidecartContainer.innerHTML = data.data.cart_html;
-        }
-
-
-        }else
-        {
-                    console.log('Faild:', data.data);
-                }
-        
-
-         
-
-
-       })
-       .catch(error =>{
-        console.error('Ajax Error', error); 
-       });
-
-
-    }
-       
-// quantity js 
-
-  jQuery(document).ready(function($) {
-  $('.quantity-selector').on('click', '.quantity-button', function() {
-    const $container = $(this).closest('.quantity-selector');
-    const $display = $container.find('.quantity-number');
-    const cartItemKey = $container.data('cart-item-key');
+    const container = button.closest('.quantity-selector');
+    const display = container.querySelector('.quantity-number');
+    const cartItemKey = container.getAttribute('data-cart-item-key');
     const security = WSCartAjax.nonce;
-    let quantity = parseInt($display.text());
 
-    if ($(this).hasClass('plus')) {
+    let quantity = parseInt(display.textContent);
+
+    if (button.classList.contains('plus')) {
       quantity++;
-    } else if ($(this).hasClass('minus') && quantity > 1) {
+    } else if (button.classList.contains('minus') && quantity > 1) {
       quantity--;
     }
 
-    $display.text(quantity);
+    display.textContent = quantity;
 
-    // Ajax call to update cart item
-    $.ajax({
-      type: 'POST',
-      url: WSCartAjax.ajax_url,
-      data: {
-        action: 'update_cart_item_quantity',
-        cart_item_key: cartItemKey,
-        credentials: 'same-origin',
-        quantity: quantity, 
-        security: security
+    // Send AJAX
+    const formData = new FormData();
+    formData.append('action', 'update_cart_item_quantity');
+    formData.append('cart_item_key', cartItemKey);
+    formData.append('credentials', 'same-origin');
+    formData.append('quantity', quantity);
+    formData.append('security', security);
 
-      },
-      success: function(response) {
-        // Optionally refresh fragments or cart total
-        $(document.body).trigger('updated_cart_totals');
-      }
-    });
+    fetch(WSCartAjax.ajax_url, {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin'
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+            const cartItemContainer = document.getElementById('cart-items-container-id');
+          if (data.data.cart_html) {
+            cartItemContainer.innerHTML = data.data.cart_html;
+          }
+
+        } else {
+          console.warn('AJAX succeeded but returned error:', data);
+        }
+      })
+      .catch(error => {
+        console.error('AJAX error:', error);
+      });
   });
+});
+
+
+// shop button link 
+
+jQuery(document).ready(function($) {
+  $('.wsshopping-continue').attr('href', WSCartAjax.shop_url);
+  $('.ws-view-cart').attr('href', WSCartAjax.cart_url);
+  $('.ws-checkout').attr('href', WSCartAjax.checkout_url);
 });

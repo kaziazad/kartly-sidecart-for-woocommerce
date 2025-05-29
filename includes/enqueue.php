@@ -16,7 +16,7 @@ class Enqueue {
 
     public function side_cart_custom_styles() {
         wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
-        wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . '/assets/css/style.css');
+        wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . 'assets/css/style.css');
 
         wp_enqueue_script('jquery');
 
@@ -26,6 +26,10 @@ class Enqueue {
         wp_localize_script('quantity-script', 'WSCartAjax', [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('ws_cart_nonce'),
+            'shop_url' => get_permalink(wc_get_page_id('shop')), // shop button link 
+            'cart_url'   => get_permalink(wc_get_page_id('cart')), // cart page link
+            'checkout_url' => get_permalink(wc_get_page_id('checkout')), // checkout page link
+
         ]);
     }
 

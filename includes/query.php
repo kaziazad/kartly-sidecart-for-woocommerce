@@ -66,13 +66,7 @@ class Query{
                 <td class="item_image_ws"><img src="<?php  echo esc_url($product_image[0]); ?>"></td>
                 <td class="item_title_ws"><?php echo esc_html($product_name); ?></td>
                 
-                <td class="item_quantity_wrapper_ws"><?php echo wp_kses_post( wc_price( floatval( $price ) ) ).' '; ?><i class="fa-solid fa-x"></i><input 
-  type="number" 
-  class="item_quantity_ws" 
-  data-cart-key="<?php echo esc_attr($cart_item_key); ?>" 
-  value="<?php echo esc_attr($quantity); ?>" onchange="itemQuantityUpdate(this)" data-product-id = "<?php echo esc_attr($product_id); ?>"></td>
-
-                <td class="">
+                <td class="item_quantity_wrapper_ws"><?php echo wp_kses_post( wc_price( floatval( $price ) ) ).' '; ?><i class="fa-solid fa-x"></i>
                 <div class="quantity-selector" data-cart-item-key="<?php echo esc_attr( $cart_item_key ); ?>">
                 <button class="quantity-button minus">−</button>
                 <div class="quantity-number"><?php echo esc_html( $cart_item['quantity'] ); ?></div>

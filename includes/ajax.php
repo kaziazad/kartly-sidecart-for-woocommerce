@@ -20,9 +20,6 @@ class Ajax{
         add_action('wp_ajax_nopriv_delete_item_from_cart', array($this, "delete_item_form_cart"));  
        
 
-        add_action('wp_ajax_update_product_quantity', array($this, "update_product_quantity"));  
-        add_action('wp_ajax_nopriv_update_product_quantity', array($this, "update_product_quantity"));  
-
 
         add_action('wp_ajax_get_updated_side_cart', array($this, "get_updated_side_cart"));  
         add_action('wp_ajax_nopriv_get_updated_side_cart', array($this, "get_updated_side_cart"));  
@@ -67,14 +64,14 @@ class Ajax{
 
         ob_start(); ?>
 
-             <div class="wscart-title" style="background-color:red;">
+             <!-- <div class="wscart-title" style="">
             <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
-            </div>
-            <div class="cart-items-container"> 
+            </div> -->
+            <!-- <div class="cart-items-container" id="cart-items-conatiner-id">  -->
                 <?php
                Query::cart_query();
                 ?>
-            </div> 
+            <!-- </div>  -->
             <?php
         $cart_html = ob_get_clean();
 
@@ -116,14 +113,14 @@ class Ajax{
 
                 ob_start(); ?>
 
-             <div class="wscart-title" style="background-color:red;">
+             <!-- <div class="wscart-title" style="background-color:red;">
             <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
             </div>
-            <div class="cart-items-container"> 
+            <div class="cart-items-container">  -->
                 <?php
                Query::cart_query();
                 ?>
-            </div> 
+            <!-- </div>  -->
             <?php
         $cart_html = ob_get_clean();
 
@@ -149,14 +146,14 @@ class Ajax{
 
     ob_start(); ?>
 
-        <div class="wscart-title" style="background-color:red;">
+        <!-- <div class="wscart-title" style="">
             <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
             </div>
-            <div class="cart-items-container"> 
+            <div class="cart-items-container">  -->
                 <?php
                Query::cart_query();
                 ?>
-            </div> 
+            <!-- </div>  -->
             <?php
         $cart_html = ob_get_clean();
 
@@ -165,8 +162,14 @@ class Ajax{
 }
 
 
-public function update_cart_item_quantity(){
 
+
+// Quantity change update function 
+
+
+
+
+public function update_cart_item_quantity(){
     check_ajax_referer('ws_cart_nonce', 'security');
 
     $cart_item_key = sanitize_text_field($_POST['cart_item_key']);
@@ -175,24 +178,25 @@ public function update_cart_item_quantity(){
     if ($cart_item_key && $quantity >= 1) {
         WC()->cart->set_quantity($cart_item_key, $quantity, true);
         WC()->cart->calculate_totals();
-        // wc_get_template('cart/mini-cart.php'); // optionally refresh the mini-cart
     }
 
-   ob_start(); ?>
+    ob_start();
+    ?>
+    <!-- <div class="wscart-title">
+        <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
+    </div>
+    <div class="cart-items-container"> -->
+        <?php Query::cart_query(); ?>
+    <!-- </div> -->
+    <?php
+    $cart_html = ob_get_clean();
 
-        <div class="wscart-title" style="background-color:red;">
-            <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
-            </div>
-            <div class="cart-items-container"> 
-                <?php
-               Query::cart_query();
-                ?>
-            </div> 
-            <?php
-        $cart_html = ob_get_clean();
+    
 
-
-    wp_send_json_success(['cart_html' => $cart_html]);
+    wp_send_json_success([
+        'cart_html' => $cart_html,
+       
+    ]);
 }
 
 

@@ -23,7 +23,7 @@ class Side_Cart_Body{
             <div class="wscart-title" style="">
             <span class="dashicons dashicons-cart"></span><span>Your Cart</span>
             </div>
-            <div class="cart-items-container"> 
+            <div class="cart-items-container" id="cart-items-container-id"> 
                 <?php
                Query::cart_query();
                 ?>
