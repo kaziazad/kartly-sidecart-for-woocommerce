@@ -65,6 +65,7 @@ class Query{
                 <td class="close_btn_ws" onclick="deleteItem(<?php echo esc_js($product_id); ?>)"><i class="fa-solid fa-x"></i></td>
                 <td class="item_image_ws"><img src="<?php  echo esc_url($product_image[0]); ?>"></td>
                 <td class="item_title_ws"><?php echo esc_html($product_name); ?></td>
+                
                 <td class="item_quantity_wrapper_ws"><?php echo wp_kses_post( wc_price( floatval( $price ) ) ).' '; ?><i class="fa-solid fa-x"></i><input 
   type="number" 
   class="item_quantity_ws" 
