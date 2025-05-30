@@ -26,9 +26,9 @@ class Query{
     
         $cart_items = WC()->cart->get_cart(); 
       
-        echo "<pre>";
+        // echo "<pre>";
         // var_dump($cart_items);
-        echo "</pre>";
+        // echo "</pre>";
 
 
         if(empty($cart_items)){
@@ -42,14 +42,14 @@ class Query{
         <tbody>
             
         <?php
-        echo "<pre>";
+        // echo "<pre>";
         // var_dump($cart_items);
-        echo "</pre>";
+        // echo "</pre>";
             foreach($cart_items as $cart_item_key => $cart_item){
                 $products = $cart_item['data'];
-                echo "<pre>";
+                // echo "<pre>";
                     // var_dump($products);
-                echo "</pre>";
+                // echo "</pre>";
                 $product_id = $cart_item['product_id'];
                 // echo  $product_id;
                 $product_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'single-post-thumbnail' );

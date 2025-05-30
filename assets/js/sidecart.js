@@ -10,7 +10,7 @@
 //   }
 // };
 
-
+typeof jQuery 
 // after add to cart action 
 jQuery( document ).ready(function($) {
     
@@ -158,3 +158,17 @@ jQuery(document).ready(function($) {
   $('.ws-view-cart').attr('href', WSCartAjax.cart_url);
   $('.ws-checkout').attr('href', WSCartAjax.checkout_url);
 });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   document.querySelectorAll('.wsshopping-continue').forEach(function(el) {
+//     el.setAttribute('href', WSCartAjax.shop_url);
+//   });
+
+//   document.querySelectorAll('.ws-view-cart').forEach(function(el) {
+//     el.setAttribute('href', WSCartAjax.cart_url);
+//   });
+
+//   document.querySelectorAll('.ws-checkout').forEach(function(el) {
+//     el.setAttribute('href', WSCartAjax.checkout_url);
+//   });
+// });
