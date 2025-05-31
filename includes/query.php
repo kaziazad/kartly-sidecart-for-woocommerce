@@ -64,15 +64,21 @@ class Query{
             <tr>
                 <td class="close_btn_ws" onclick="deleteItem(<?php echo esc_js($product_id); ?>)"><i class="fa-solid fa-x"></i></td>
                 <td class="item_image_ws"><img src="<?php  echo esc_url($product_image[0]); ?>"></td>
-                <td class="item_title_ws"><?php echo esc_html($product_name); ?></td>
+                <!-- <td class="item_title_ws"><?php echo esc_html($product_name); ?></td> -->
                 
-                <td class="item_quantity_wrapper_ws"><?php echo wp_kses_post( wc_price( floatval( $price ) ) ).' '; ?><i class="fa-solid fa-x"></i>
+                <td class="item_title_quantity_wrapper_ws">
+                    
+                <div class="item_title_ws">
+                    <?php echo esc_html($product_name); ?>
+                </div>
+                <div class="item_quantity_wrapper_ws">
+                
                 <div class="quantity-selector" data-cart-item-key="<?php echo esc_attr( $cart_item_key ); ?>">
                 <button class="quantity-button minus">−</button>
                 <div class="quantity-number"><?php echo esc_html( $cart_item['quantity'] ); ?></div>
                 <button class="quantity-button plus">+</button>
                 </div>
-
+                </div>
                 </td>
                 <td class="item_total_ws"><?php echo wp_kses_post( wc_price( floatval( $quantity*$price ) ) ); ?></td>
             </tr>
@@ -82,7 +88,7 @@ class Query{
             <tr class="total-price_ws">
                 <td></td>
                 <td></td>
-                <td></td>
+                
                 <td>Total</td>
                 <td><?php echo wp_kses_post( WC()->cart->get_total() ); ?></td>
            </tr>

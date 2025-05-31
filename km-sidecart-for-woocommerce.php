@@ -33,7 +33,7 @@ register_activation_hook( __FILE__, 'dependency_check');
 
 
 
- final class woocommerce_sidecart{
+ final class Woocommerce_Sidecart{
 
     private static $instance = NULL; 
 
@@ -135,5 +135,5 @@ register_activation_hook( __FILE__, 'dependency_check');
 
  }
 
- woocommerce_sidecart::get_instance();
+ Woocommerce_Sidecart::get_instance();
 
