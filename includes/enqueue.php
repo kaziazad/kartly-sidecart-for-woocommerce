@@ -1,39 +1,75 @@
 <?php
 
-
 namespace WSCART;
 
+// Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
 }
 
+/**
+ * Class Enqueue
+ *
+ * Handles the registration and enqueuing of frontend and admin styles/scripts
+ */
 class Enqueue {
 
+    /**
+     * Constructor registers WordPress hooks for enqueuing scripts and styles.
+     */
     public function __construct() {
+        // Enqueue scripts/styles on the frontend
         add_action('wp_enqueue_scripts', [$this, 'side_cart_custom_styles']);
+
+        // Enqueue scripts/styles on the admin dashboard (currently unused)
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_assets']);
     }
 
+    /**
+     * Enqueues necessary styles and scripts for the side cart on the frontend.
+     */
     public function side_cart_custom_styles() {
+        // Load Font Awesome from CDN
         wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css');
+
+        // Load custom side cart styles
         wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . 'assets/css/style.css');
 
+        // Load jQuery (dependency for scripts)
         wp_enqueue_script('jquery');
 
-        wp_enqueue_script('quantity-script', WOOCOMMERCE_SIDECART_URL . 'assets/js/quantity-handler.js', ['jquery'], '1.0', true);
-        wp_enqueue_script('sidecart-script', WOOCOMMERCE_SIDECART_URL . 'assets/js/sidecart.js', ['jquery'], '1.0.0', true);
+        // Load custom quantity handler script
+        wp_enqueue_script(
+            'quantity-script',
+            WOOCOMMERCE_SIDECART_URL . 'assets/js/quantity-handler.js',
+            ['jquery'],
+            '1.0',
+            true
+        );
 
+        // Load custom side cart functionality script
+        wp_enqueue_script(
+            'sidecart-script',
+            WOOCOMMERCE_SIDECART_URL . 'assets/js/sidecart.js',
+            ['jquery'],
+            '1.0.0',
+            true
+        );
+
+        // Localize data to pass PHP variables to JS
         wp_localize_script('quantity-script', 'WSCartAjax', [
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('ws_cart_nonce'),
-            'shop_url' => get_permalink(wc_get_page_id('shop')), // shop button link 
-            'cart_url'   => get_permalink(wc_get_page_id('cart')), // cart page link
-            'checkout_url' => get_permalink(wc_get_page_id('checkout')), // checkout page link
-
+            'ajax_url'      => admin_url('admin-ajax.php'),
+            'nonce'         => wp_create_nonce('ws_cart_nonce'),
+            'shop_url'      => get_permalink(wc_get_page_id('shop')),     // Link to shop page
+            'cart_url'      => get_permalink(wc_get_page_id('cart')),     // Link to cart page
+            'checkout_url'  => get_permalink(wc_get_page_id('checkout')), // Link to checkout page
         ]);
     }
 
+    /**
+     * Enqueues admin assets (reserved for future use).
+     */
     public function admin_enqueue_assets() {
-        // Future admin assets here
+        // Add admin scripts/styles here in the future if needed
     }
 }
