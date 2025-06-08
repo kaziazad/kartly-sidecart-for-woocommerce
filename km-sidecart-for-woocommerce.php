@@ -49,8 +49,7 @@ final class Woocommerce_Sidecart {
         add_action( 'init', array( $this, 'cart_button_shortcode' ) );
 
         // AJAX handlers for updating cart quantity
-        add_action( 'wp_ajax_ws_update_cart_quantity', [ $this, 'update_cart_quantity' ] );
-        add_action( 'wp_ajax_nopriv_ws_update_cart_quantity', [ $this, 'update_cart_quantity' ] );
+        
     }
 
     /**
@@ -96,37 +95,8 @@ final class Woocommerce_Sidecart {
         }
     }
 
-    /**
-     * Handles AJAX request to update cart quantity
-     */
-    public function update_cart_quantity() {
-        check_ajax_referer( 'ws_cart_nonce', 'nonce' );
-
-        if ( isset( $_POST['cart_key'] ) ) {
-            $cart_key = sanitize_text_field( wp_unslash( $_POST['cart_key'] ) );
-        }
-
-        if ( isset( $_POST['quantity'] ) ) {
-            $quantity = max( 0, intval( $_POST['quantity'] ) );
-        }
-
-        if ( ! WC()->cart || ! $cart_key ) {
-            wp_send_json_error( 'Invalid cart' );
-        }
-
-        // Check if item exists in cart
-        $cart = WC()->cart->get_cart();
-        if ( ! isset( $cart[ $cart_key ] ) ) {
-            wp_send_json_error( 'Item not found' );
-        }
-
-        // Update the cart item quantity and recalculate totals
-        WC()->cart->set_quantity( $cart_key, $quantity, true );
-        WC()->cart->calculate_totals();
-
-        wp_send_json_success( [ 'message' => 'Cart updated' ] );
-    }
-
+    
+ 
     /**
      * Load required plugin classes
      */
@@ -135,12 +105,15 @@ final class Woocommerce_Sidecart {
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/enqueue.php';
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/query.php';
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/ajax.php';
+        require_once WOOCOMMERCE_SIDECART_PATH . 'admin/admin.php';
+
 
         // Initialize plugin components
         new WSCART\Side_Cart_Body();
         new WSCART\enqueue();
         new WSCART\Query();
         new WSCART\Ajax();
+        new WSCART\Admin();
     }
 }
 

@@ -41,15 +41,7 @@ class Enqueue {
         // Load jQuery (dependency for scripts)
         wp_enqueue_script('jquery');
 
-        // Load custom quantity handler script
-        wp_enqueue_script(
-            'quantity-script',
-            WOOCOMMERCE_SIDECART_URL . 'assets/js/quantity-handler.js',
-            ['jquery'],
-            '1.0',
-            true
-        );
-
+        
         // Load custom side cart functionality script
         wp_enqueue_script(
             'sidecart-script',
@@ -60,7 +52,7 @@ class Enqueue {
         );
 
         // Localize data to pass PHP variables to JS
-        wp_localize_script('quantity-script', 'WSCartAjax', [
+        wp_localize_script('sidecart-script', 'WSCartAjax', [
             'ajax_url'      => admin_url('admin-ajax.php'),
             'nonce'         => wp_create_nonce('ws_cart_nonce'),
             'shop_url'      => get_permalink(wc_get_page_id('shop')),     // Link to shop page
@@ -73,6 +65,11 @@ class Enqueue {
      * Enqueues admin assets (reserved for future use).
      */
     public function admin_enqueue_assets() {
-        // Add admin scripts/styles here in the future if needed
+
+         if (isset($_GET['page']) && $_GET['page'] === 'kartly-settings') {
+        // Enqueue styles/scripts only for this page
+        wp_enqueue_style('kartly_side_cart_admin_css', WOOCOMMERCE_SIDECART_URL . 'admin/assets/css/admin-css.css');
+    }
+        
     }
 }

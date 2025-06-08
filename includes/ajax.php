@@ -132,7 +132,7 @@ class Ajax {
         ob_start();
         Query::cart_query();
         $cart_html = ob_get_clean();
-
+        
         wp_send_json_success([
             'cart_html' => $cart_html,
         ]);
