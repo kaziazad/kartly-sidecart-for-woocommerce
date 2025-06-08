@@ -19,14 +19,14 @@
 .wscart-topbar {
     display: flex;
     align-items: center;
-    
+    padding: 0 0 10px 0;
 }
 
 
 .wscart-title{
-    padding: 10px 0;
+    
     text-align: center;
-    color: #fff;
+    color:#f0e1b8;
     font-size: 16px;
     display: flex;
     align-items: center;
@@ -90,7 +90,7 @@
 }
 
 
-.wsshopping-continue{
+/* .wsshopping-continue{
 
 }
 
@@ -101,7 +101,7 @@
 
 .ws-checkout{
 
-}
+} */
 
 
 /* table contents css  */
@@ -166,9 +166,11 @@ input.item_quantity_ws {
 
 .cart-table{
     width: 100%;
+    border: none;
     /* border: 1px solid black; */
-    border-collapse: collapse;
-    border-radius: 5px !important;
+    /* border-collapse: collapse; */
+    /* border-radius: 5px !important; */
+    margin: 0;
 }
 
 .item_total_ws{

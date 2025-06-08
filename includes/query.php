@@ -39,7 +39,7 @@ class Query {
         ?>
 
         <!-- Start of custom cart table UI -->
-        <form action="" method="POST">
+        <!-- <form action="" method="POST"> -->
             <table class='cart-table'>
                 <tbody>
 
@@ -96,7 +96,7 @@ class Query {
                     </tr>
                 </tbody>
             </table>
-        </form>
+        <!-- </form> -->
         <!-- End of custom cart table UI -->
 
         <?php

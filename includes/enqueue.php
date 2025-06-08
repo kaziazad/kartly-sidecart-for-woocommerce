@@ -2,10 +2,13 @@
 
 namespace WSCART;
 
+
+
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
 }
+
 
 /**
  * Class Enqueue
