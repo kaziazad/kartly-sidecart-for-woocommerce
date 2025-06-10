@@ -4,8 +4,10 @@
 
 .kartly-admin-container{
     padding: 20px;
-     background: #002f49;
+    background: #002f49;
+    height: 100vh;
 }
+
 .kartly-admin-title{
     width: 100% !important;
     padding: 20px;
@@ -25,11 +27,150 @@
     font-size: 10px;
 }
 
+/* cart setting body area  */
+
 .kartly-admin-body{
     background:  #f0e1b8;
-    padding: 20px;
+    padding: 60px;
+    display: flex;
+     list-style: none;
+    height: 78vh;
+    border-radius: 5px;
 }
 
-.options-area{
-    display: flex;
+.kartly-sidebar{
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    /* padding-left: 40px; */
+    vertical-align: top;
+    width: 33.33333%;
 }
+
+.kartly-options-area{
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: 40px;
+    vertical-align: top;
+    width: 66.66666%;
+   
+}
+
+
+.kartly-cart-settings-sidebar{
+    padding: 15px 20px 15px 40px;
+    margin-bottom: 10px;
+    /* color: $base-color;
+    background: $second-color; */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    font-weight: 700;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: 18px;
+    border-radius: 5px;
+}
+.kartly-cart-settings-sidebar:hover{
+    box-shadow: 0 0 10px rgb(0, 47, 73)
+}
+
+
+.kartly-cart-settings-sidebar span.light {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    /* background-color: $base-color; */
+    border-radius: 100%;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.kartly-cart-settings-sidebar.active span.light {
+    background-color: #002f49;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    top: 0;
+    border-radius: 0;
+}
+
+.kartly-cart-settings-sidebar.active {
+    color:  #002f49;
+    padding: 15px 20px 15px 20px;
+}
+
+
+.kartly-cart-section-wrapper {
+    position: relative;
+    height: 0px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: .5s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.kartly-cart-section-wrapper li {
+    opacity: 0;
+    transform: translateX(50px);
+    position: absolute;
+    list-style: none;
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 100%;
+}
+
+.kartly-cart-section-wrapper li.active {
+    transition-delay: .3s;
+    z-index: 2;
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.kartly-realted span,
+.kartly-buttons span,
+.kartly-items span,
+.kartly-topbar span{
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #002f49;
+    color: #f0e1b8;
+    padding: 10px;
+    width: 98%;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 20px;
+}
+.settings-input{
+    padding: 20px 0;
+    display: flex;
+    font-size: 16px;
+}
+
+.settings-input input[type=submit] {
+    padding: 10px 30px;
+    color: #f0e1b8;
+    background: #002f49;
+    border-radius: 5px;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.settings-input input[type=submit]:hover {
+  
+    color: #f0e1b8;
+    background: #002f49c1;
+    border-color: #002f49c1;
+}
+
+.settings-label{
+    width: 30%;
+}
+.setings-input-area{
+    width: 70%;
+}
+
+

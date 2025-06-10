@@ -68,7 +68,14 @@ class Enqueue {
 
          if (isset($_GET['page']) && $_GET['page'] === 'kartly-settings') {
         // Enqueue styles/scripts only for this page
-        wp_enqueue_style('kartly_side_cart_admin_css', WOOCOMMERCE_SIDECART_URL . 'admin/assets/css/admin-css.css');
+        wp_enqueue_style('kartly_side_cart_admin_css', WOOCOMMERCE_SIDECART_URL . 'admin/assets/css/admin-css.css', array(), filemtime( $css_file_path ));
+        wp_enqueue_script(
+            'sidecart-admin-script',
+            WOOCOMMERCE_SIDECART_URL . 'admin/assets/js/sidcart-admin.js',
+            ['jquery'],
+            filemtime( $css_file_path ),
+            true
+        );
     }
         
     }
