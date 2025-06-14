@@ -84,7 +84,7 @@ class Admin{
                                      
                                     }
 
-
+/*
                                     // item settings update 
 
                                     if (isset($_POST['items_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
@@ -120,7 +120,7 @@ class Admin{
                                         
                                     }
 
-
+*/
                                     // button settings update 
 
                                     if (isset($_POST['button_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
@@ -246,7 +246,7 @@ class Admin{
                                      <div class="kartly-items">
                                         <span>Kartly Items Settings</span>
                                         <div class="options-area">
-                                            <form action="" method="post">
+                                            <form action="" method="post" id="sidecart_settings_form">
                                                 <div class="settings-input">
                                                     <div class="settings-label">
                                                         <label for="item_delete_icon">Item Delete Button icon</label>
@@ -322,10 +322,12 @@ class Admin{
                                                          <input type="number" id="items_delete_button_border_radius" name="items_delete_button_border_radius" value="<?php echo esc_attr(get_option('items_delete_button_border_radius', '5')); ?>">
                                                     </div>
                                                 </div>
-                                                 <?php wp_nonce_field('save_items_settings_action', 'items_settings_nonce'); ?>
+                                                 <?php /* wp_nonce_field('save_items_settings_action', 'items_settings_nonce'); */?>
                                                 <div class="settings-input">
-                                                    <input type="submit" id="items_settings_submit" name="items_settings_submit" value="Save">
-                                                    <input type="submit" id="items_settings_reset" name="items_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');">
+                                                    <!-- <input type="submit" id="items_settings_submit" value="Save">
+                                                    <input type="submit" id="items_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');"> -->
+                                                        <input type="submit" id="items_settings_submit" value="Save">
+                                                        <input type="button" id="items_settings_reset" value="Reset to Default">
                                                 </div>
                                             </form>
                                         </div> 

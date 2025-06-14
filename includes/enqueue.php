@@ -76,6 +76,12 @@ class Enqueue {
             filemtime( $css_file_path ),
             true
         );
+
+           // Localize data to pass PHP variables to JS
+        wp_localize_script('sidecart-admin-script', 'WSCartAdminAjax', [
+            'ajax_url'      => admin_url('admin-ajax.php'),
+            'nonce'         => wp_create_nonce('ws_cart_admin_nonce'),
+        ]);
     }
         
     }
