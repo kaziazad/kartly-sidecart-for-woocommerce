@@ -106,6 +106,7 @@ final class Woocommerce_Sidecart {
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/query.php';
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/ajax.php';
         require_once WOOCOMMERCE_SIDECART_PATH . 'admin/admin.php';
+        require_once WOOCOMMERCE_SIDECART_PATH . 'admin/admin-ajax.php';
 
 
         // Initialize plugin components
@@ -114,6 +115,7 @@ final class Woocommerce_Sidecart {
         new WSCART\Query();
         new WSCART\Ajax();
         new WSCART\Admin();
+        new WSCART\Admin_Ajax();
     }
 }
 

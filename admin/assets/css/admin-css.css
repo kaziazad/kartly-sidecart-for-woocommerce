@@ -174,3 +174,19 @@
 }
 
 
+.ws-button{
+    padding: 10px 30px;
+    color: #f0e1b8;
+    background: #002f49;
+    border-radius: 5px;
+    margin: 30px 20px 30px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ws-button:hover {
+    color: #f0e1b8;
+    background: #002f49c1;
+    border-color: #002f49c1;
+}
+

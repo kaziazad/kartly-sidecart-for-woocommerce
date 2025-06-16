@@ -58,6 +58,7 @@ class Admin{
                                 <?php 
 
                                 // basic settings update 
+                                /*
                                     if (isset($_POST['basic_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
     
                                         // Sanitize and save each option
@@ -82,7 +83,8 @@ class Admin{
                                         update_option('cart_body_border_radius', intval('5'));
                                         update_option('cart_close_button_border_radius', intval('5'));
                                      
-                                    }
+                                    } 
+                                        */
 
 /*
                                     // item settings update 
@@ -171,7 +173,7 @@ class Admin{
                                     <div class="kartly-topbar">
                                         <span>Kartly Basic Settings</span>
                                         <div class="options-area">
-                                            <form action="" method="post">
+                                            <form action="" method="post" id="sidecart_basic_settings_form">
                                                 <div class="settings-input">
                                                     <div class="settings-label">
                                                         <label for="kartly_title">Cart Title: </label>
@@ -233,8 +235,12 @@ class Admin{
                                                 </div>
                                                 <?php wp_nonce_field('save_items_settings_action', 'items_settings_nonce'); ?>
                                                 <div class="settings-input">
-                                                    <input type="submit" id="basic_settings_submit" name="basic_settings_submit" value="Save">
-                                                    <input type="submit" id="basic_settings_reset" name="basic_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');">
+                                                    <!-- <input type="submit" id="basic_settings_submit" name="basic_settings_submit" value="Save">
+                                                    <input type="submit" id="basic_settings_reset" name="basic_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');"> -->
+
+                                                    <button type="button" class="ws-button" id="basic_settings_submit">Save</button>
+                                                    <button type="button" class="ws-button" id="basic_settings_reset">Reset to Default</button>  
+
                                                 </div>
                                             </form>
                                         </div> 
@@ -326,10 +332,12 @@ class Admin{
                                                 <div class="settings-input">
                                                     <!-- <input type="submit" id="items_settings_submit" value="Save">
                                                     <input type="submit" id="items_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');"> -->
-                                                        <input type="submit" id="items_settings_submit" value="Save">
-                                                        <input type="button" id="items_settings_reset" value="Reset to Default">
+                                                        <!-- <input type="submit" id="items_settings_submit" value="Save"> -->
+                                                        <button type="button" class="ws-button" id="items_settings_submit">Save</button>
+                                                        <button type="button" class="ws-button" id="items_settings_reset">Reset to Default</button>  
                                                 </div>
                                             </form>
+                                            
                                         </div> 
                                     </div>  
                                 </li>
