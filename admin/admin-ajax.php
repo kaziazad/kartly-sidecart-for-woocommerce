@@ -18,6 +18,9 @@ class Admin_Ajax {
 
          add_action('wp_ajax_wscart_save_settings', [$this, 'wscart_save_settings']);
          add_action('wp_ajax_wscart_reset_settings', [$this, 'wscart_reset_settings']);
+
+         add_action('wp_ajax_wscart_save_button_settings', [$this, 'wscart_save_button_settings']);
+         add_action('wp_ajax_wscart_reset_button_settings', [$this, 'wscart_reset_button_settings']);
     }
 
    //  ws cart basic settings update and reset  
@@ -145,6 +148,71 @@ function wscart_reset_settings() {
         update_option('items_area_border_radius', intval(5));
         update_option('items_area_quantity_border_radius', intval(5));
         update_option('items_delete_button_border_radius', intval(5));
+   
+
+    wp_send_json_success(['message' => 'Settings reset to default.']);
+}
+
+
+   //  button settings save and reset 
+    function wscart_save_button_settings() {
+    check_ajax_referer('ws_cart_admin_nonce', 'security');
+
+  
+     if (isset($_POST['shopping_button_color'])) {
+       update_option('shopping_button_color', sanitize_hex_color($_POST['shopping_button_color']));
+     }
+     if (isset($_POST['shopping_button_bg_color'])) {
+        update_option('shopping_button_bg_color', sanitize_hex_color($_POST['shopping_button_bg_color']));
+     }
+     if (isset($_POST['continue_shopping_button_border_radius'])) {
+        update_option('continue_shopping_button_border_radius', intval($_POST['continue_shopping_button_border_radius']));
+     }
+
+
+     if (isset($_POST['view_cart_button_color'])) {
+        update_option('view_cart_button_color', sanitize_hex_color($_POST['view_cart_button_color']));
+     }
+     if (isset($_POST['view_cart_button_bg_color'])) {
+        update_option('view_cart_button_bg_color', sanitize_hex_color($_POST['view_cart_button_bg_color']));
+     }
+     if (isset($_POST['view_cart_button_border_radius'])) {
+        update_option('view_cart_button_border_radius', intval($_POST['view_cart_button_border_radius']));
+     }
+
+
+     if (isset($_POST['checkout_button_color'])) {
+        update_option('checkout_button_color', sanitize_hex_color($_POST['checkout_button_color']));
+     }
+     if (isset($_POST['checkout_button_bg_color'])) {
+        update_option('checkout_button_bg_color', sanitize_hex_color($_POST['checkout_button_bg_color']));
+     }
+     if (isset($_POST['checkout_button_border_radius'])) {
+        update_option('checkout_button_border_radius', intval($_POST['checkout_button_border_radius']));
+     }
+    
+    
+    wp_send_json_success(['message' => 'Settings saved successfully.']);
+}
+
+
+
+function wscart_reset_button_settings() {
+    check_ajax_referer('ws_cart_admin_nonce', 'security');
+
+
+    
+         update_option('shopping_button_color', sanitize_hex_color('#002f49'));
+         update_option('shopping_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('continue_shopping_button_border_radius', intval(5));
+                                        
+         update_option('view_cart_button_color', sanitize_hex_color('#002f49'));
+         update_option('view_cart_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('view_cart_button_border_radius', intval(5));
+                                        
+         update_option('checkout_button_color', sanitize_hex_color('#002f49'));
+         update_option('checkout_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('continue_shopping_button_border_radius', intval(5));
    
 
     wp_send_json_success(['message' => 'Settings reset to default.']);

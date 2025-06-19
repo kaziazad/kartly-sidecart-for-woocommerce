@@ -178,4 +178,83 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+
+// Button settings update and reset 
+
+
+    const buttonForm = document.getElementById("button_settings_form");
+    const buttonFormSubmit = document.getElementById("button_settings_submit");
+
+    buttonFormSubmit.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const buttonFormData = new FormData(buttonForm);
+        buttonFormData.append("action", "wscart_save_button_settings");
+        buttonFormData.append("security", WSCartAdminAjax.nonce);
+
+        fetch(WSCartAdminAjax.ajax_url, {
+            method: "POST",
+            credentials: 'same-origin',
+            body: buttonFormData,
+        })
+            .then((res) => res.json())
+            .then((response) => {
+                if (response.success) {
+                    // alert(response.data.message);
+                } else {
+                    alert(response.data.message || "Something went wrong.");
+                }
+            })
+            .catch((error) => {
+                console.error("AJAX error:", error);
+                alert("Error saving settings.");
+            });
+    });
+
+    // const resetBtn = document.getElementById("button_settings_form");
+    const buttonSettingsReset = document.getElementById("button_settings_reset");
+
+    buttonSettingsReset.addEventListener("click", function (event) {
+
+         event.preventDefault(); 
+
+        if (!confirm("Are you sure you want to reset to default settings?")) return;
+
+        const buttonReset = new FormData(buttonForm);
+        buttonReset.append("action", "wscart_reset_button_settings");
+        buttonReset.append("security", WSCartAdminAjax.nonce);
+
+        fetch(WSCartAdminAjax.ajax_url, {
+            method: "POST",
+            credentials: 'same-origin',
+            body: buttonReset,
+        })
+            .then((res) => res.json())
+            .then((response) => {
+                if (response.success) {
+                    // alert(response.data.message);
+                    // location.reload(); 
+                   
+                    document.getElementById('shopping_button_color').value = '#002f49';
+                    document.getElementById('shopping_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('continue_shopping_button_border_radius').value = '5';
+
+                    document.getElementById('view_cart_button_color').value = '#002f49';
+                    document.getElementById('view_cart_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('view_cart_button_border_radius').value = '5';
+
+                    document.getElementById('checkout_button_color').value = '#002f49';
+                    document.getElementById('checkout_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('checkout_button_border_radius').value = '5';
+                } else {
+                    alert("Reset failed.");
+                }
+            })
+            .catch((error) => {
+                console.error("Reset error:", error);
+                alert("Error resetting settings.");
+            });
+    });
+
+
 });

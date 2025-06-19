@@ -209,5 +209,9 @@ input.item_quantity_ws {
   font-weight: bold;
 }
 
+/* cart coupon   */
 
+.kartly-coupon{
+    display: flex;
+}
 

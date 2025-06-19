@@ -124,7 +124,7 @@ class Admin{
 
 */
                                     // button settings update 
-
+/*
                                     if (isset($_POST['button_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
     
                                         // Sanitize and save each option
@@ -159,7 +159,7 @@ class Admin{
                                         update_option('checkout_button_bg_color', sanitize_hex_color('#f0e1b8'));
                                         update_option('continue_shopping_button_border_radius', intval(5));
                                     }
-
+*/
 
 
 
@@ -353,7 +353,7 @@ class Admin{
                                       <div class="kartly-buttons">
                                         <span>Kartly Buttons Settings</span>
                                         <div class="options-area">
-                                           <form action="" method="post">
+                                           <form action="" method="post" id="button_settings_form">
                                                 <div class="settings-input">
                                                     <div class="settings-label">
                                                         <label for="shopping_button_color">Continue Shopping Button Text color</label>
@@ -441,8 +441,11 @@ class Admin{
                                                 </div>
                                                 <?php wp_nonce_field('save_items_settings_action', 'items_settings_nonce'); ?>
                                                 <div class="settings-input">
-                                                    <input type="submit" id="button_settings_submit" name="button_settings_submit" value="Save">
-                                                     <input type="submit" id="button_settings_reset" name="button_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');">
+                                                    <!-- <input type="submit" id="button_settings_submit" name="button_settings_submit" value="Save">
+                                                     <input type="submit" id="button_settings_reset" name="button_settings_reset" value="Reset to Default" onclick="return confirm('Are you sure you want to reset to default settings?');"> -->
+
+                                                    <button type="button" class="ws-button" id="button_settings_submit">Save</button>
+                                                    <button type="button" class="ws-button" id="button_settings_reset">Reset to Default</button>  
                                                 </div>
                                             </form>
                                         </div> 

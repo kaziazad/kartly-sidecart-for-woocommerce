@@ -86,7 +86,7 @@ class Query {
                     </tr>
 
                 <?php } ?>
-
+                   
                     <!-- Total cart price row -->
                     <tr class="total-price_ws">
                         <td></td>
@@ -96,6 +96,10 @@ class Query {
                     </tr>
                 </tbody>
             </table>
+            <div class="kartly-coupon">
+                <div> <input type="text"></div>
+                <div><button>Apply</button></div>
+            </div>
         <!-- </form> -->
         <!-- End of custom cart table UI -->
 

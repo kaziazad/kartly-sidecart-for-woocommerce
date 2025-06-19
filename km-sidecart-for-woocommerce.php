@@ -78,7 +78,7 @@ final class Woocommerce_Sidecart {
      */
     public function ws_cart_button_callback() {
         ?>
-        <button class="cart-button-ws" onclick="wsCartToggle()" id="cart_button_ws_id">Cart</button>
+        <button class="cart-button-ws" onclick="wsCartToggle()" id="">Cart</button>
         <?php
     }
 

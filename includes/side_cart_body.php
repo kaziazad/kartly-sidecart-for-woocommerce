@@ -63,6 +63,9 @@ class Side_Cart_Body {
             </div>
 
         </div>
+
+        
+
         <?php
     }
 }
