@@ -35,6 +35,9 @@ register_activation_hook( __FILE__, 'dependency_check' );
  */
 final class Woocommerce_Sidecart {
 
+    // plugin version 
+     const VERSION = '1.10.3';
+
     // Singleton instance
     private static $instance = NULL;
 
@@ -48,8 +51,8 @@ final class Woocommerce_Sidecart {
         // Register shortcode for cart button
         add_action( 'init', array( $this, 'cart_button_shortcode' ) );
 
-        // AJAX handlers for updating cart quantity
-        
+         $this->init_hooks();
+
     }
 
     /**
@@ -77,9 +80,11 @@ final class Woocommerce_Sidecart {
      * Shortcode callback to output the cart button HTML
      */
     public function ws_cart_button_callback() {
+        ob_start();
         ?>
-        <button class="cart-button-ws" onclick="wsCartToggle()" id="">Cart</button>
+        <button class="cart-button-ws" onclick="wsCartToggle()" id="cart_button_ws_id">Cart</button>
         <?php
+         return ob_get_clean();
     }
 
     /**
@@ -93,8 +98,23 @@ final class Woocommerce_Sidecart {
         if ( ! defined( 'WOOCOMMERCE_SIDECART_URL' ) ) {
             define( 'WOOCOMMERCE_SIDECART_URL', plugin_dir_url( __FILE__ ) );
         }
+         if ( ! defined( 'WOOCOMMERCE_SIDECART_URL' ) ) {
+            define( 'KARTLY_VERSION', self::VERSION );
+         }
+    }
+    
+
+    private function init_hooks() {
+        register_activation_hook( __FILE__, array( $this, 'activate_plugin' ) );
     }
 
+    public function activate_plugin() {
+        $installed_version = get_option( 'kartly_plugin_version' );
+        if ( $installed_version !== self::VERSION ) {
+            // Run upgrade routines here if needed
+            update_option( 'kartly_plugin_version', self::VERSION );
+        }
+    }
     
  
     /**

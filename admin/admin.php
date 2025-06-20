@@ -35,9 +35,13 @@ class Admin{
             <div class="kartly-admin-container">
                
                 <div class="kartly-admin-title">
-                    <!-- <img src="<?php echo WOOCOMMERCE_SIDECART_URL . 'assets/img/kartly-logo.png'; ?>" alt=""> -->
-                    <h2>Kartly Settings Page</h2>
-                    <h6>By- Kazi Mahmud Al Azad</h6>
+                    <div class="kartly-logo-area">
+                        <img src="<?php echo WOOCOMMERCE_SIDECART_URL . 'assets/img/kartly-logo.jpg'; ?>" alt="Kartly Logo">
+                    </div>
+                    <div class="kartly-title-area">
+                        <h2>Kartly Settings Page</h2>
+                        <h6>By- Kazi Mahmud Al Azad</h6>
+                    </div>
                 </div>
                 <div class="kartly-admin-body">
                     <div class="kartly-sidebar">
@@ -54,118 +58,6 @@ class Admin{
                              <span class="light"></span><span>Cart Buttons Settings</span>
                         </div>
                     </div>
-
-                                <?php 
-
-                                // basic settings update 
-                                /*
-                                    if (isset($_POST['basic_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Sanitize and save each option
-                                        update_option('kartly_title', sanitize_text_field($_POST['kartly_title']));
-                                        update_option('title_bg', sanitize_hex_color($_POST['title_bg']));
-                                        update_option('title_color', sanitize_hex_color($_POST['title_color']));
-                                        update_option('cart_close_color', sanitize_hex_color($_POST['cart_close_color']));
-                                        update_option('cart_close_bg_color', sanitize_hex_color($_POST['cart_close_bg_color']));
-                                        update_option('cart_body_border_radius', intval($_POST['cart_body_border_radius']));
-                                        update_option('cart_close_button_border_radius', intval($_POST['cart_close_button_border_radius']));
-                                     
-                                    }
-
-                                    if (isset($_POST['basic_settings_reset']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Sanitize and save each option
-                                        update_option('kartly_title', sanitize_text_field('kartly_title'));
-                                        update_option('title_bg', sanitize_hex_color('#002f49'));
-                                        update_option('title_color', sanitize_hex_color('#f0e1b8'));
-                                        update_option('cart_close_color', sanitize_hex_color('#002f49'));
-                                        update_option('cart_close_bg_color', sanitize_hex_color('#f0e1b8'));
-                                        update_option('cart_body_border_radius', intval('5'));
-                                        update_option('cart_close_button_border_radius', intval('5'));
-                                     
-                                    } 
-                                        */
-
-/*
-                                    // item settings update 
-
-                                    if (isset($_POST['items_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Sanitize and save each option
-                                        update_option('item_delete_icon', sanitize_hex_color($_POST['item_delete_icon']));
-                                        update_option('item_delete_bg', sanitize_hex_color($_POST['item_delete_bg']));
-                                        update_option('items_title_color', sanitize_hex_color($_POST['items_title_color']));
-                                        update_option('items_quantity_color', sanitize_hex_color($_POST['items_quantity_color']));
-                                        update_option('items_price_color', sanitize_hex_color($_POST['items_price_color']));
-                                        update_option('items_total_price_color', sanitize_hex_color($_POST['items_total_price_color']));
-
-                                        update_option('items_area_border_radius', intval($_POST['items_area_border_radius']));
-                                        update_option('items_area_quantity_border_radius', intval($_POST['items_area_quantity_border_radius']));
-                                        update_option('items_delete_button_border_radius', intval($_POST['items_delete_button_border_radius']));
-                                    }
-
-
-                                    if (isset($_POST['items_settings_reset']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Reset each option to default value
-                                
-                                        update_option('item_delete_icon', sanitize_hex_color('#f0e1b8'));
-                                        update_option('item_delete_bg', sanitize_hex_color('#002f49'));
-                                        update_option('items_title_color', sanitize_hex_color('#002f49'));
-                                        update_option('items_quantity_color', sanitize_hex_color('#002f49'));
-                                        update_option('items_price_color', sanitize_hex_color('#002f49'));
-                                        update_option('items_total_price_color', sanitize_hex_color('#002f49'));
-                                        update_option('items_area_border_radius', intval(5));
-                                        update_option('items_area_quantity_border_radius', intval(5));
-                                        update_option('items_delete_button_border_radius', intval(5));
-
-                                        
-                                    }
-
-*/
-                                    // button settings update 
-/*
-                                    if (isset($_POST['button_settings_submit']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Sanitize and save each option
-                                        update_option('shopping_button_color', sanitize_hex_color($_POST['shopping_button_color']));
-                                        update_option('shopping_button_bg_color', sanitize_hex_color($_POST['shopping_button_bg_color']));
-                                        update_option('continue_shopping_button_border_radius', intval($_POST['continue_shopping_button_border_radius']));
-
-                                        update_option('view_cart_button_color', sanitize_hex_color($_POST['view_cart_button_color']));
-                                        update_option('view_cart_button_bg_color', sanitize_hex_color($_POST['view_cart_button_bg_color']));
-                                        update_option('view_cart_button_border_radius', intval($_POST['view_cart_button_border_radius']));
-
-                                        update_option('checkout_button_color', sanitize_hex_color($_POST['checkout_button_color']));
-                                        update_option('checkout_button_bg_color', sanitize_hex_color($_POST['checkout_button_bg_color']));
-                                        update_option('checkout_button_border_radius', intval($_POST['checkout_button_border_radius']));
-
-                                    }
-
-
-                                    if (isset($_POST['button_settings_reset']) && check_admin_referer('save_items_settings_action', 'items_settings_nonce')) {
-    
-                                        // Reset each option to default value
-                                
-                                        update_option('shopping_button_color', sanitize_hex_color('#002f49'));
-                                        update_option('shopping_button_bg_color', sanitize_hex_color('#f0e1b8'));
-                                        update_option('continue_shopping_button_border_radius', intval(5));
-                                        
-                                        update_option('view_cart_button_color', sanitize_hex_color('#002f49'));
-                                        update_option('view_cart_button_bg_color', sanitize_hex_color('#f0e1b8'));
-                                        update_option('view_cart_button_border_radius', intval(5));
-                                        
-                                        update_option('checkout_button_color', sanitize_hex_color('#002f49'));
-                                        update_option('checkout_button_bg_color', sanitize_hex_color('#f0e1b8'));
-                                        update_option('continue_shopping_button_border_radius', intval(5));
-                                    }
-*/
-
-
-
-
-                                ?>
-
                     <div class="kartly-options-area">
                         <div class="kartly-cart-settings">
                             <ul class="kartly-cart-section-wrapper">

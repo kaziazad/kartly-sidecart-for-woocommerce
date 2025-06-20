@@ -11,18 +11,29 @@
 .kartly-admin-title{
     width: 100% !important;
     padding: 20px;
-    text-align: center;
+    /* text-align: center; */
     color: #f0e1b8;
     display: flex;
 }
-.kartly-admin-title h2{
+
+.kartly-logo-area{
+    margin-right: 20px;
+}
+.kartly-logo-area img{
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.kartly-title-area h2{
     margin: 0;
     color: #f0e1b8;
     font-size: 25px;
 }
 
-.kartly-admin-title h6 {
-    margin: 20px 0 0 20px;
+.kartly-title-area h6 {
+    margin: 15px 0 0 0;
     color: #f0e1b8;
     font-size: 10px;
 }
