@@ -12,14 +12,14 @@ document.getElementById('wscart-close-id').onclick = function() {
   
 };
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   const cartButton = document.getElementById('cart_button_ws_id');
-//   if (cartButton) {
-//     cartButton.addEventListener('click', function () {
-//       wsCartToggle();
-//     });
-//   }
-// });
+document.addEventListener('DOMContentLoaded', function () {
+  const cartButton = document.getElementById('cart_button_ws_id');
+  if (cartButton) {
+    cartButton.addEventListener('click', function () {
+      wsCartToggle();
+    });
+  }
+});
 
 
 

@@ -33,14 +33,14 @@ class Side_Cart_Body {
      */
     public function side_cart_body_callback() {
         ?>
-        <div class='wscart-side-cart-body' id="wscart-side-cart-body-id">
+        <div class='wscart-side-cart-body' id="wscart-side-cart-body-id" style = "background:<?php echo get_option('title_bg')?>;">
             
             <!-- Cart title bar -->
              <div class="wscart-topbar">
                 <div class="wscart-title">
                                       
                     <span class="dashicons dashicons-cart"></span>
-                    <span>Your Cart</span>
+                    <span><?php echo get_option('kartly_title');?></span>
                 </div>
                 <div class="wscart-close" id="wscart-close-id">
                     <i class="fa-solid fa-x"></i>
