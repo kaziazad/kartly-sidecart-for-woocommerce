@@ -121,8 +121,14 @@ class Ajax {
     public function update_cart_item_quantity() {
         check_ajax_referer('ws_cart_nonce', 'security');
 
-        $cart_item_key = sanitize_text_field($_POST['cart_item_key']);
-        $quantity = intval($_POST['quantity']);
+        if (isset($_POST['cart_item_key'])) {
+            $cart_item_key = sanitize_text_field(wp_unslash($_POST['cart_item_key']));
+        }
+
+        if (isset($_POST['quantity'])) {
+            $quantity = intval($_POST['quantity']);
+        }
+        
 
         if ($cart_item_key && $quantity >= 1) {
             WC()->cart->set_quantity($cart_item_key, $quantity, true);

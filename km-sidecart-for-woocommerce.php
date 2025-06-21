@@ -27,6 +27,26 @@ function dependency_check() {
         deactivate_plugins( plugin_basename( __FILE__ ) );
         wp_die( 'This plugin requires WooCommerce.', 'Plugin dependency check', array( 'back_link' => true ) );
     }
+
+    
+    global $wpdb;
+    $table = $wpdb->prefix . 'kartly_cart_data';
+
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $table (
+        id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+        product_id bigint(20) NOT NULL,
+        session_id varchar(255) NOT NULL,
+        created_at datetime DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (id)
+    ) $charset_collate;";
+
+    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+    dbDelta( $sql );
+
+
+
 }
 register_activation_hook( __FILE__, 'dependency_check' );
 
@@ -52,6 +72,8 @@ final class Woocommerce_Sidecart {
         add_action( 'init', array( $this, 'cart_button_shortcode' ) );
 
          $this->init_hooks();
+
+         add_action( 'admin_notices', array( $this, 'kartly_version_notice' ) );
 
     }
 
@@ -82,7 +104,8 @@ final class Woocommerce_Sidecart {
     public function ws_cart_button_callback() {
         ob_start();
         ?>
-        <button class="cart-button-ws" onclick="wsCartToggle()" id="cart_button_ws_id">Cart</button>
+        <button class="cart-button-ws" onclick="wsCartToggle()" >Cart</button>
+        <!-- id="cart_button_ws_id" -->
         <?php
          return ob_get_clean();
     }
@@ -105,7 +128,7 @@ final class Woocommerce_Sidecart {
     
 
     private function init_hooks() {
-        register_activation_hook( __FILE__, array( $this, 'activate_plugin' ) );
+       add_action( 'init', array( $this, 'maybe_upgrade' ) );
     }
 
     public function activate_plugin() {
@@ -115,6 +138,48 @@ final class Woocommerce_Sidecart {
             update_option( 'kartly_plugin_version', self::VERSION );
         }
     }
+
+    public function maybe_upgrade() {
+    $installed_version = get_option( 'kartly_plugin_version' );
+
+    if ( ! $installed_version ) {
+        // Fresh install
+        update_option( 'kartly_plugin_version', self::VERSION );
+        return;
+    }
+
+    if ( version_compare( $installed_version, '1.10.4', '<' ) ) {
+        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
+       
+        \WSCART\Kartly_Upgrade_1_10_3::run();
+    }
+
+    // if ( version_compare( $installed_version, '1.10.0', '<' ) ) {
+    //     require_once WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/class-upgrade-1-10-0.php';
+    //     WSCart_Upgrade_1_10_0::run();
+    // }
+
+    update_option( 'kartly_plugin_version', self::VERSION );
+}
+
+
+public function kartly_version_notice() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    $plugin_version = get_option( 'kartly_plugin_version', 'unknown' );
+    $upgrade_log = get_option( 'wscart_last_upgraded_to', 'Not recorded' );
+    if($plugin_version !== $upgrade_log){
+    ?>
+    <div class="notice notice-success is-dismissible">
+        <p><strong>Kartly Sidecart</strong> is currently running version <code><?php echo esc_html( $plugin_version ); ?></code>.</p>
+        <p>Last upgrade processed: <code><?php echo esc_html( $upgrade_log ); ?></code></p>
+    </div>
+    <?php
+    }
+}
+
     
  
     /**
@@ -136,6 +201,7 @@ final class Woocommerce_Sidecart {
         new WSCART\Ajax();
         new WSCART\Admin();
         new WSCART\Admin_Ajax();
+
     }
 }
 

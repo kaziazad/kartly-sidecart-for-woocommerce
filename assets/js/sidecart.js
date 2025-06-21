@@ -12,19 +12,19 @@ document.getElementById('wscart-close-id').onclick = function() {
   
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  const cartButton = document.getElementById('cart_button_ws_id');
-  if (cartButton) {
-    cartButton.addEventListener('click', function () {
-      wsCartToggle();
-    });
-  }
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   const cartButton = document.getElementById('cart_button_ws_id');
+//   if (cartButton) {
+//     cartButton.addEventListener('click', function () {
+//       wsCartToggle();
+//     });
+//   }
+// });
 
 
 
 function wsCartToggle() {
-
+ console.log("Toggle working");
   const sidecartws = document.getElementById('wscart-side-cart-body-id');
    if (sidecartws.style.right === '-700px' || sidecartws.style.right === '') {
      sidecartws.style.right = '0';
