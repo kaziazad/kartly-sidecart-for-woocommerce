@@ -81,10 +81,6 @@ function wscart_reset_basic_settings() {
    //  items settings save and reset 
     function wscart_save_settings() {
     check_ajax_referer('ws_cart_admin_nonce', 'security');
-
-
-    
-
   
      if (isset($_POST['item_delete_icon'])) {
         update_option('item_delete_icon', sanitize_hex_color(wp_unslash($_POST['item_delete_icon'])));
@@ -200,7 +196,7 @@ function wscart_reset_button_settings() {
                                         
          update_option('checkout_button_color', sanitize_hex_color('#002f49'));
          update_option('checkout_button_bg_color', sanitize_hex_color('#f0e1b8'));
-         update_option('continue_shopping_button_border_radius', intval(5));
+         update_option('checkout_button_border_radius', intval(5));
    
 
     wp_send_json_success(['message' => 'Settings reset to default.']);
