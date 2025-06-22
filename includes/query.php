@@ -62,7 +62,8 @@ class Query {
 
                         <!-- Product image -->
                         <td class="item_image_ws">
-                            <img src="<?php echo esc_url($product_image[0]); ?>">
+                            <?php echo wp_get_attachment_image( get_post_thumbnail_id($product_id), 'thumbnail', false, array( 'class' => 'item-thumb' ) ); ?>
+                            
                         </td>
 
                         <!-- Product name and quantity controls -->

@@ -36,7 +36,7 @@ class Admin{
                
                 <div class="kartly-admin-title">
                     <div class="kartly-logo-area">
-                        <img src="<?php echo esc_url(WOOCOMMERCE_SIDECART_URL . 'assets/img/kartly-logo.jpg'); ?>" alt="Kartly Logo">
+                        <img src="<?php echo esc_url( trailingslashit( WOOCOMMERCE_SIDECART_URL ) . 'assets/img/kartly-logo.jpg' ); ?>" alt="Kartly Logo">
                     </div>
                     <div class="kartly-title-area">
                         <h2>Kartly Settings Page</h2>
@@ -56,6 +56,9 @@ class Admin{
                         </div>
                         <div class="kartly-cart-settings-sidebar">
                              <span class="light"></span><span>Cart Buttons Settings</span>
+                        </div>
+                        <div class="kartly-cart-settings-sidebar">
+                             <span class="light"></span><span>Kartly Shortcodes</span>
                         </div>
                     </div>
                     <div class="kartly-options-area">
@@ -340,6 +343,14 @@ class Admin{
                                                     <button type="button" class="ws-button" id="button_settings_reset">Reset to Default</button>  
                                                 </div>
                                             </form>
+                                        </div> 
+                                    </div>  
+                                </li>
+                                <li>
+                                      <div class="kartly-buttons">
+                                        <span>Kartly Shortcode</span>
+                                        <div class="options-area">
+                                           <p>Cart Button Shorcode: <strong>[ws-cart-button]</strong></p>
                                         </div> 
                                     </div>  
                                 </li>

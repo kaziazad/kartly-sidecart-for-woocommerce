@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       KM Sidecart for Woocommerce 
+ * Plugin Name:       Kartly Sidecart for Woocommerce 
  * Plugin URI:        https://kazimahmud.com/
  * Description:       Woocommerce custom Side Cart
  * Version:           1.10.3

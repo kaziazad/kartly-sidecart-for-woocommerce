@@ -1,10 +1,10 @@
-=== Kartly SideCart for WooCommerce ===
+=== Kartly Sidecart for Woocommerce ===
 Contributors: Kazi Mahmud Al Azad  
-Tags: woocommerce, sidecart, ajax cart, floating cart, mini cart, shopping cart  
-Requires at least: 5.0  
-Tested up to: 6.5  
+Tags: woocommerce sidecart, ajax cart, floating cart, mini cart, shopping cart  
+Requires at least: 5.2
+Tested up to: 6.8  
 Requires PHP: 7.2  
-Stable tag: 1.0.0  
+Stable tag: 1.10.3  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 

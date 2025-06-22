@@ -28,7 +28,7 @@ class Kartly_Upgrade_1_10_3 {
             update_option( 'wscart_last_upgraded_to', '1.10.3' );
 
         } else {
-            error_log( "Upgrade 1.10.3 failed: table $table does not exist." );
+            // error_log( "Upgrade 1.10.3 failed: table $table does not exist." );
         }
     }
 }
