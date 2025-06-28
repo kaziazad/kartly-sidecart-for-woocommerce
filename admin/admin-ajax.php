@@ -35,6 +35,9 @@ class Admin_Ajax {
      if (isset($_POST['title_bg'])) {
         update_option('title_bg', sanitize_hex_color(wp_unslash($_POST['title_bg'])));
      }
+     if (isset($_POST['cart_items_bg'])) {
+        update_option('cart_items_bg', sanitize_hex_color(wp_unslash($_POST['cart_items_bg'])));
+     }
      if (isset($_POST['title_color'])) {
         update_option('title_color', sanitize_hex_color(wp_unslash($_POST['title_color'])));
      }
@@ -63,11 +66,12 @@ function wscart_reset_basic_settings() {
 
 
     
-         update_option('kartly_title', sanitize_text_field('kartly_title'));
+         update_option('kartly_title', sanitize_text_field('Kartly Cart'));
          update_option('title_bg', sanitize_hex_color('#002f49'));
-         update_option('title_color', sanitize_hex_color('#f0e1b8'));
+         update_option('cart_items_bg', sanitize_hex_color('#ffffff'));
+         update_option('title_color', sanitize_hex_color('#ffffff'));
          update_option('cart_close_color', sanitize_hex_color('#002f49'));
-         update_option('cart_close_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('cart_close_bg_color', sanitize_hex_color('#ffffff'));
          update_option('cart_body_border_radius', intval('5'));
          update_option('cart_close_button_border_radius', intval('5'));
    
@@ -123,7 +127,7 @@ function wscart_reset_settings() {
 
 
     
-        update_option('item_delete_icon', sanitize_hex_color('#f0e1b8'));
+        update_option('item_delete_icon', sanitize_hex_color('#ffffff'));
         update_option('item_delete_bg', sanitize_hex_color('#002f49'));
         update_option('items_title_color', sanitize_hex_color('#002f49'));
         update_option('items_quantity_color', sanitize_hex_color('#002f49'));
@@ -187,15 +191,15 @@ function wscart_reset_button_settings() {
 
     
          update_option('shopping_button_color', sanitize_hex_color('#002f49'));
-         update_option('shopping_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('shopping_button_bg_color', sanitize_hex_color('#ffffff'));
          update_option('continue_shopping_button_border_radius', intval(5));
                                         
          update_option('view_cart_button_color', sanitize_hex_color('#002f49'));
-         update_option('view_cart_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('view_cart_button_bg_color', sanitize_hex_color('#ffffff'));
          update_option('view_cart_button_border_radius', intval(5));
                                         
          update_option('checkout_button_color', sanitize_hex_color('#002f49'));
-         update_option('checkout_button_bg_color', sanitize_hex_color('#f0e1b8'));
+         update_option('checkout_button_bg_color', sanitize_hex_color('#ffffff'));
          update_option('checkout_button_border_radius', intval(5));
    
 

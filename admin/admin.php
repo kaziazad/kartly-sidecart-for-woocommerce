@@ -79,6 +79,17 @@ class Admin{
                                                     
                                                 </div>
                                                 <div class="settings-input">
+                                                    <div class="settings-label">
+                                                        <label for="kartly_icon">Cart Icon: </label>
+                                                    </div>
+                                                    <div class="setings-input-area">
+                                                        <input type="radio" id="kartly_icon1" name="kartly_icon" value="1">
+                                                        <input type="radio" id="kartly_icon2" name="kartly_icon" value="2">
+                                                        <input type="radio" id="kartly_icon3" name="kartly_icon" value="3">
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="settings-input">
                                                      <div class="settings-label">
                                                         <label for="title_bg">Cart Body Background: </label>
                                                     </div>
@@ -89,11 +100,21 @@ class Admin{
                                                      
                                                 </div>
                                                 <div class="settings-input">
+                                                     <div class="settings-label">
+                                                        <label for="cart_items_bg">Cart Items Background: </label>
+                                                    </div>
+                                                    <div class="setings-input-area">
+                                                        <input type="color" id="cart_items_bg" name="cart_items_bg" value="<?php echo esc_attr(get_option('cart_items_bg', '#ffffff')); ?>">
+                                                    </div>
+
+                                                     
+                                                </div>
+                                                <div class="settings-input">
                                                     <div class="settings-label">
                                                         <label for="title_color">Cart Title Color: </label>
                                                     </div>
                                                     <div class="setings-input-area">
-                                                         <input type="color" id="title_color" name="title_color" value="<?php echo esc_attr(get_option('title_color', '#f0e1b8')); ?>">
+                                                         <input type="color" id="title_color" name="title_color" value="<?php echo esc_attr(get_option('title_color', '#ffffff')); ?>">
                                                     </div>
                                                 </div>
                                                 <div class="settings-input">
@@ -109,7 +130,7 @@ class Admin{
                                                         <label for="cart_close_bg_color">Cart close Button Background: </label>
                                                     </div>
                                                     <div class="setings-input-area">
-                                                         <input type="color" id="cart_close_bg_color" name="cart_close_bg_color" value="<?php echo esc_attr(get_option('cart_close_bg_color', '#f0e1b8')); ?>">
+                                                         <input type="color" id="cart_close_bg_color" name="cart_close_bg_color" value="<?php echo esc_attr(get_option('cart_close_bg_color', '#ffffff')); ?>">
                                                     </div>
                                                 </div>
                                                 <div class="settings-input">
@@ -153,7 +174,7 @@ class Admin{
                                                         <label for="item_delete_icon">Item Delete Button icon</label>
                                                     </div>
                                                     <div class="setings-input-area">
-                                                        <input type="color" id="item_delete_icon" name="item_delete_icon" value="<?php echo esc_attr(get_option('item_delete_icon', '#f0e1b8')); ?>">
+                                                        <input type="color" id="item_delete_icon" name="item_delete_icon" value="<?php echo esc_attr(get_option('item_delete_icon', '#ffffff')); ?>">
                                                     </div>
                                                     
                                                 </div>
@@ -263,7 +284,7 @@ class Admin{
                                                         <label for="shopping_button_bg_color">Continue Shopping Button Background color</label>
                                                     </div>
                                                     <div class="setings-input-area">
-                                                        <input type="color" id="shopping_button_bg_color" name="shopping_button_bg_color" value="<?php echo esc_attr(get_option('shopping_button_bg_color', '#f0e1b8')); ?>">
+                                                        <input type="color" id="shopping_button_bg_color" name="shopping_button_bg_color" value="<?php echo esc_attr(get_option('shopping_button_bg_color', '#ffffff')); ?>">
                                                     </div>
                                                     
                                                 </div>
@@ -291,7 +312,7 @@ class Admin{
                                                         <label for="view_cart_button_bg_color">View Cart Button Background color</label>
                                                     </div>
                                                     <div class="setings-input-area">
-                                                        <input type="color" id="view_cart_button_bg_color" name="view_cart_button_bg_color" value="<?php echo esc_attr(get_option('view_cart_button_bg_color', '#f0e1b8')); ?>">
+                                                        <input type="color" id="view_cart_button_bg_color" name="view_cart_button_bg_color" value="<?php echo esc_attr(get_option('view_cart_button_bg_color', '#ffffff')); ?>">
                                                     </div>
                                                     
                                                 </div>
@@ -320,7 +341,7 @@ class Admin{
                                                     </div>
 
                                                     <div class="setings-input-area">
-                                                        <input type="color" id="checkout_button_bg_color" name="checkout_button_bg_color" value="<?php echo esc_attr(get_option('checkout_button_bg_color', '#f0e1b8')); ?>">
+                                                        <input type="color" id="checkout_button_bg_color" name="checkout_button_bg_color" value="<?php echo esc_attr(get_option('checkout_button_bg_color', '#ffffff')); ?>">
                                                     </div>
                                                     
                                                 </div>

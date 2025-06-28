@@ -82,11 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     // alert(response.data.message);
                     // location.reload(); 
 
-                    document.getElementById('kartly_title').value = 'kartly_title';
+                    document.getElementById('kartly_title').value = 'Kartly Cart';
                     document.getElementById('title_bg').value = '#002f49';
-                    document.getElementById('title_color').value = '#f0e1b8';
+                    document.getElementById('cart_items_bg').value = '#ffffff';
+                    document.getElementById('title_color').value = '#ffffff';
                     document.getElementById('cart_close_color').value = '#002f49';
-                    document.getElementById('cart_close_bg_color').value = '#f0e1b8';
+                    document.getElementById('cart_close_bg_color').value = '#ffffff';
                     document.getElementById('cart_body_border_radius').value = '5';
                     document.getElementById('cart_close_button_border_radius').value = '5';
                     
@@ -157,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.success) {
                     // alert(response.data.message);
                     // location.reload(); 
-                    document.getElementById('item_delete_icon').value = '#f0e1b8';
+                    document.getElementById('item_delete_icon').value = '#ffffff';
                     document.getElementById('item_delete_bg').value = '#002f49';
                     document.getElementById('items_title_color').value = '#002f49';
                     document.getElementById('items_quantity_color').value = '#002f49';
@@ -236,15 +237,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     // location.reload(); 
                    
                     document.getElementById('shopping_button_color').value = '#002f49';
-                    document.getElementById('shopping_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('shopping_button_bg_color').value = '#ffffff';
                     document.getElementById('continue_shopping_button_border_radius').value = '5';
 
                     document.getElementById('view_cart_button_color').value = '#002f49';
-                    document.getElementById('view_cart_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('view_cart_button_bg_color').value = '#ffffff';
                     document.getElementById('view_cart_button_border_radius').value = '5';
 
                     document.getElementById('checkout_button_color').value = '#002f49';
-                    document.getElementById('checkout_button_bg_color').value = '#f0e1b8';
+                    document.getElementById('checkout_button_bg_color').value = '#ffffff';
                     document.getElementById('checkout_button_border_radius').value = '5';
                 } else {
                     alert("Reset failed.");

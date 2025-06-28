@@ -5,14 +5,14 @@
 .kartly-admin-container{
     padding: 20px;
     background: #002f49;
-    height: 100vh;
+    height: 976px;
 }
 
 .kartly-admin-title{
     width: 100% !important;
     padding: 20px;
     /* text-align: center; */
-    color: #f0e1b8;
+    color: #ffffff;
     display: flex;
 }
 
@@ -28,24 +28,24 @@
 
 .kartly-title-area h2{
     margin: 0;
-    color: #f0e1b8;
+    color: #ffffff;
     font-size: 25px;
 }
 
 .kartly-title-area h6 {
     margin: 15px 0 0 0;
-    color: #f0e1b8;
+    color: #ffffff;
     font-size: 10px;
 }
 
 /* cart setting body area  */
 
 .kartly-admin-body{
-    background:  #f0e1b8;
+    background:  #ffffff;
     padding: 60px;
     display: flex;
      list-style: none;
-    height: 78vh;
+    height: 762px;
     border-radius: 5px;
 }
 
@@ -76,7 +76,7 @@
     margin-bottom: 10px;
     /* color: $base-color;
     background: $second-color; */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 20%);
     cursor: pointer;
     position: relative;
     vertical-align: middle;
@@ -148,7 +148,7 @@
     font-size: 18px;
     font-weight: 700;
     background-color: #002f49;
-    color: #f0e1b8;
+    color: #ffffff;
     padding: 10px;
     width: 98%;
     border-radius: 5px;
@@ -163,7 +163,7 @@
 
 .settings-input input[type=submit] {
     padding: 10px 30px;
-    color: #f0e1b8;
+    color: #ffffff;
     background: #002f49;
     border-radius: 5px;
     margin-top: 30px;
@@ -172,7 +172,7 @@
 }
 .settings-input input[type=submit]:hover {
   
-    color: #f0e1b8;
+    color: #ffffff;
     background: #002f49c1;
     border-color: #002f49c1;
 }
@@ -184,10 +184,15 @@
     width: 60%;
 }
 
+/* .quantity-button{
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+} */
 
 .ws-button{
     padding: 10px 30px;
-    color: #f0e1b8;
+    color: #ffffff;
     background: #002f49;
     border-radius: 5px;
     margin: 30px 20px 30px 0;
@@ -196,7 +201,7 @@
 }
 
 .ws-button:hover {
-    color: #f0e1b8;
+    color: #ffffff;
     background: #002f49c1;
     border-color: #002f49c1;
 }
