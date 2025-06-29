@@ -27,10 +27,17 @@ class Admin_Ajax {
 
     function wscart_save_basic_settings() {
     check_ajax_referer('ws_cart_admin_nonce', 'security');
-
+  
+       
   
      if (isset($_POST['kartly_title'])) {
         update_option('kartly_title', sanitize_text_field(wp_unslash($_POST['kartly_title'])));
+     }
+     if (isset($_POST['kartly_icon'])) {
+        update_option('kartly_icon', sanitize_text_field(wp_unslash($_POST['kartly_icon'])));
+     }
+     if (isset($_POST['kartly_icon_color'])) {
+        update_option('kartly_icon_color', sanitize_text_field(wp_unslash($_POST['kartly_icon_color'])));
      }
      if (isset($_POST['title_bg'])) {
         update_option('title_bg', sanitize_hex_color(wp_unslash($_POST['title_bg'])));
@@ -67,6 +74,8 @@ function wscart_reset_basic_settings() {
 
     
          update_option('kartly_title', sanitize_text_field('Kartly Cart'));
+         update_option('kartly_icon', sanitize_text_field('1'));
+         update_option('kartly_icon_color', sanitize_hex_color('#ffffff'));
          update_option('title_bg', sanitize_hex_color('#002f49'));
          update_option('cart_items_bg', sanitize_hex_color('#ffffff'));
          update_option('title_color', sanitize_hex_color('#ffffff'));

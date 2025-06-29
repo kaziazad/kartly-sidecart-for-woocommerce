@@ -190,6 +190,12 @@
     padding: 0 !important;
 } */
 
+.cart-icons-area {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .ws-button{
     padding: 10px 30px;
     color: #ffffff;

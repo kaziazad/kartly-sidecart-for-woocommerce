@@ -83,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     // location.reload(); 
 
                     document.getElementById('kartly_title').value = 'Kartly Cart';
+                    document.getElementById('kartly_icon1').checked = true;
+                    document.getElementById('kartly_icon_color').value = '#ffffff';
                     document.getElementById('title_bg').value = '#002f49';
                     document.getElementById('cart_items_bg').value = '#ffffff';
                     document.getElementById('title_color').value = '#ffffff';
