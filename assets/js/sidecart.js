@@ -129,7 +129,7 @@ function deleteItem(productId) {
 // Handle Quantity Change (Plus/Minus)
 // ======================================
 document.addEventListener('DOMContentLoaded', function () {
-  const sideCartContainer = document.getElementById('wscart-side-cart-body-id');
+  const sideCartContainer = document.getElementById('cart-items-container-id');
 
   sideCartContainer.addEventListener('click', function (event) {
     event.preventDefault();
