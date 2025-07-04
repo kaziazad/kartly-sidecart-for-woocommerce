@@ -8,7 +8,7 @@ namespace WSCART;
 if( !defined( 'ABSPATH' )){
     exit;
 }
-
+// admin page class 
 class Admin{
 
     public function __construct(){
@@ -18,7 +18,7 @@ class Admin{
 
 
      
-
+// Admin page register 
     public function kartly_admin_page(){
         add_menu_page( 
             "Kartly Settings", 
@@ -30,7 +30,7 @@ class Admin{
             6
         );
     }
-
+// Admin page markup 
     public function kartly_admin_callback(){ ?>
             <div class="kartly-admin-container">
                
@@ -44,6 +44,7 @@ class Admin{
                     </div>
                 </div>
                 <div class="kartly-admin-body">
+                    <!-- Admin page sidebar  -->
                     <div class="kartly-sidebar">
                         <div class="kartly-cart-settings-sidebar active">
                             <span class="light"></span><span>Cart Basic Settings</span>
@@ -61,9 +62,12 @@ class Admin{
                              <span class="light"></span><span>Kartly Shortcodes</span>
                         </div>
                     </div>
+
+                    <!-- Admin page body  -->
                     <div class="kartly-options-area">
                         <div class="kartly-cart-settings">
                             <ul class="kartly-cart-section-wrapper">
+                                <!-- Basic settings area  -->
                                 <li class="active">
                                     <div class="kartly-topbar">
                                         <span>Kartly Basic Settings</span>
@@ -198,6 +202,7 @@ class Admin{
                                    
                                 </li>
                                
+                                <!-- Cart Items Settings  -->
                                 <li>
                                      <div class="kartly-items">
                                         <span>Kartly Items Settings</span>
@@ -291,6 +296,8 @@ class Admin{
                                         </div> 
                                     </div>  
                                 </li>
+
+                                <!-- cart realated items setting   -->
                                 <li>
                                       <div class="kartly-realted">
                                         <span>Kartly Related Items Settings</span>
@@ -299,6 +306,8 @@ class Admin{
                                         </div> 
                                     </div>  
                                 </li>
+
+                                <!-- Cart buttons settings  -->
                                 <li>
                                       <div class="kartly-buttons">
                                         <span>Kartly Buttons Settings</span>
@@ -401,6 +410,7 @@ class Admin{
                                         </div> 
                                     </div>  
                                 </li>
+                                <!-- carts shortcode and other information  -->
                                 <li>
                                       <div class="kartly-buttons">
                                         <span>Kartly Shortcode</span>
