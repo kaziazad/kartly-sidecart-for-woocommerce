@@ -25,7 +25,7 @@ class Kartly_Upgrade_1_10_3 {
                 $wpdb->query( "ALTER TABLE `$table` ADD COLUMN new_field TEXT DEFAULT ''" );
             }
 
-            update_option( 'wscart_last_upgraded_to', '1.10.3' );
+            update_option( 'wscart_last_upgraded_to', '1.0.0' );
 
         } else {
             // error_log( "Upgrade 1.10.3 failed: table $table does not exist." );

@@ -3,7 +3,7 @@
  * Plugin Name:       Kartly Sidecart for Woocommerce 
  * Plugin URI:        https://kazimahmud.com/
  * Description:       Woocommerce custom Side Cart
- * Version:           1.10.3
+ * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Kazi Mahmud Al Azad
@@ -56,7 +56,7 @@ register_activation_hook( __FILE__, 'dependency_check' );
 final class Woocommerce_Sidecart {
 
     // plugin version 
-     const VERSION = '1.10.3';
+     const VERSION = '1.0.0';
 
     // Singleton instance
     private static $instance = NULL;
@@ -149,7 +149,7 @@ final class Woocommerce_Sidecart {
         return;
     }
 
-    if ( version_compare( $installed_version, '1.10.4', '<' ) ) {
+    if ( version_compare( $installed_version, '1.0.0', '<' ) ) {
         require_once WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
        
         \WSCART\Kartly_Upgrade_1_10_3::run();
