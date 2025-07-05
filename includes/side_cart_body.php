@@ -65,7 +65,7 @@ class Side_Cart_Body {
                     <span style="color:<?php echo esc_attr(get_option('title_color')); ?>;"><?php echo esc_attr(get_option('kartly_title'));?></span>
                 </div>
                 <div class="wscart-close" id="wscart-close-id" style="background:<?php echo esc_attr(get_option('cart_close_bg_color'));?>; border-radius:<?php echo esc_attr(get_option('cart_close_button_border_radius'));?>px;">
-                    <i class="fa-solid fa-x" style="color:<?php echo esc_attr(get_option('cart_close_color'));?>;"></i>
+                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="20" height="20" x="0" y="0" viewBox="0 0 512.015 512.015" style="background:<?php echo esc_attr(get_option('cart_close_bg_color')); ?>; padding:0px; border-radius:<?php echo esc_attr(get_option('cart_close_button_border_radius')); ?>px;" xml:space="preserve" class=""><g><path d="M298.594 256.011 503.183 51.422c11.776-11.776 11.776-30.81 0-42.586s-30.81-11.776-42.586 0L256.008 213.425 51.418 8.836C39.642-2.94 20.608-2.94 8.832 8.836s-11.776 30.81 0 42.586l204.589 204.589L8.832 460.6c-11.776 11.776-11.776 30.81 0 42.586a30.034 30.034 0 0 0 21.293 8.824c7.71 0 15.42-2.952 21.293-8.824l204.589-204.589 204.589 204.589a30.034 30.034 0 0 0 21.293 8.824c7.71 0 15.42-2.952 21.293-8.824 11.776-11.776 11.776-30.81 0-42.586L298.594 256.011z" fill="<?php echo esc_attr(get_option('cart_close_color')); ?>" opacity="1" data-original="#000000" class=""/></g></svg>
                 </div>
             </div>
 
