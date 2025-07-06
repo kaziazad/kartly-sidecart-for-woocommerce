@@ -160,16 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.success) {
                     // alert(response.data.message);
                     // location.reload(); 
-                    document.getElementById('item_delete_icon').value = '#ffffff';
+                    document.getElementById('item_delete_icon1').checked = true;
+                    document.getElementById('item_delete_icon_color').value = '#ffffff';
                     document.getElementById('item_delete_bg').value = '#002f49';
                     document.getElementById('items_title_color').value = '#002f49';
                     document.getElementById('items_quantity_color').value = '#002f49';
                     document.getElementById('items_price_color').value = '#002f49';
                     document.getElementById('items_total_price_color').value = '#002f49';
 
-                    document.getElementById('items_area_border_radius').value = 5;
-                    document.getElementById('items_area_quantity_border_radius').value = 5;
-                    document.getElementById('items_delete_button_border_radius').value = 5;
+                    document.getElementById('items_area_border_radius').value = '5';
+                    document.getElementById('items_area_quantity_border_radius').value = '5';
+                    document.getElementById('items_delete_button_border_radius').value = '5';
                 } else {
                     alert("Reset failed.");
                 }

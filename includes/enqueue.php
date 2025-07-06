@@ -33,7 +33,7 @@ class Enqueue {
      */
     public function side_cart_custom_styles() {
         // Load Font Awesome from CDN
-        wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', array(), '6.7.2', 'all');
+        // wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', array(), '6.7.2', 'all');
 
         // wp_enqueue_style('font_awesome', WOOCOMMERCE_SIDECART_URL . 'assets/css/all.min.css', array(),  time(), 'all');
         // Load custom side cart styles

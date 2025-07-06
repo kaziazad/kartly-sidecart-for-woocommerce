@@ -94,9 +94,12 @@ function wscart_reset_basic_settings() {
    //  items settings save and reset 
     function wscart_save_settings() {
     check_ajax_referer('ws_cart_admin_nonce', 'security');
-  
+
      if (isset($_POST['item_delete_icon'])) {
-        update_option('item_delete_icon', sanitize_hex_color(wp_unslash($_POST['item_delete_icon'])));
+        update_option('item_delete_icon', intval($_POST['item_delete_icon']));
+     }
+     if (isset($_POST['item_delete_icon_color'])) {
+        update_option('item_delete_icon_color', sanitize_hex_color(wp_unslash($_POST['item_delete_icon_color'])));
      }
      if (isset($_POST['item_delete_bg'])) {
         update_option('item_delete_bg', sanitize_hex_color(wp_unslash($_POST['item_delete_bg'])));
@@ -136,7 +139,8 @@ function wscart_reset_settings() {
 
 
     
-        update_option('item_delete_icon', sanitize_hex_color('#ffffff'));
+        update_option('item_delete_icon',sanitize_text_field('1'));
+        update_option('item_delete_icon_color', sanitize_hex_color('#ffffff'));
         update_option('item_delete_bg', sanitize_hex_color('#002f49'));
         update_option('items_title_color', sanitize_hex_color('#002f49'));
         update_option('items_quantity_color', sanitize_hex_color('#002f49'));
