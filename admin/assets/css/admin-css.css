@@ -5,7 +5,7 @@
 .kartly-admin-container{
     padding: 20px;
     background: #002f49;
-    height: 976px;
+    height: 1040px;
 }
 
 .kartly-admin-title{
@@ -45,7 +45,7 @@
     padding: 60px;
     display: flex;
      list-style: none;
-    height: 762px;
+    height: 825px;
     border-radius: 5px;
 }
 
