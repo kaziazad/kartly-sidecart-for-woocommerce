@@ -12,7 +12,7 @@ if( !defined( 'ABSPATH' )){
 class Admin{
 
     public function __construct(){
-        $this->image_url = WOOCOMMERCE_SIDECART_URL . 'assets/img/kartly-logo-icon.png';
+        $this->image_url = KARTLY_WOOCOMMERCE_SIDECART_URL . 'assets/img/kartly-logo-icon.png';
         add_action('admin_menu', array($this, 'kartly_admin_page'));
     }
 
@@ -36,7 +36,7 @@ class Admin{
                
                 <div class="kartly-admin-title">
                     <div class="kartly-logo-area">
-                        <img src="<?php echo esc_url( trailingslashit( WOOCOMMERCE_SIDECART_URL ) . 'assets/img/kartly-logo.jpg' ); ?>" alt="Kartly Logo">
+                        <img src="<?php echo esc_url( trailingslashit( KARTLY_WOOCOMMERCE_SIDECART_URL ) . 'assets/img/kartly-logo.jpg' ); ?>" alt="Kartly Logo">
                     </div>
                     <div class="kartly-title-area">
                         <h2>Kartly Settings Page</h2>

@@ -6,6 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
+ * Requires Plugins:  woocommerce
  * Author:            Kazi Mahmud Al Azad
  * Author URI:        https://kazimahmud.com/
  * License:           GPL v2 or later
@@ -53,7 +54,7 @@ register_activation_hook( __FILE__, 'dependency_check' );
 /**
  * Main plugin class to handle KM Sidecart functionality
  */
-final class Woocommerce_Sidecart {
+final class Kartly_Woocommerce_Sidecart {
 
     // plugin version 
      const VERSION = '1.0.0';
@@ -80,7 +81,7 @@ final class Woocommerce_Sidecart {
     /**
      * Singleton getter
      *
-     * @return Woocommerce_Sidecart
+     * @return Kartly_Woocommerce_Sidecart
      */
     public static function get_instance() {
         if ( is_null( self::$instance ) ) {
@@ -115,14 +116,14 @@ final class Woocommerce_Sidecart {
      * Define plugin path and URL constants
      */
     private function define_ws_constants() {
-        if ( ! defined( 'WOOCOMMERCE_SIDECART_PATH' ) ) {
-            define( 'WOOCOMMERCE_SIDECART_PATH', plugin_dir_path( __FILE__ ) );
+        if ( ! defined( 'KARTLY_WOOCOMMERCE_SIDECART_PATH' ) ) {
+            define( 'KARTLY_WOOCOMMERCE_SIDECART_PATH', plugin_dir_path( __FILE__ ) );
         }
 
-        if ( ! defined( 'WOOCOMMERCE_SIDECART_URL' ) ) {
-            define( 'WOOCOMMERCE_SIDECART_URL', plugin_dir_url( __FILE__ ) );
+        if ( ! defined( 'KARTLY_WOOCOMMERCE_SIDECART_URL' ) ) {
+            define( 'KARTLY_WOOCOMMERCE_SIDECART_URL', plugin_dir_url( __FILE__ ) );
         }
-         if ( ! defined( 'WOOCOMMERCE_SIDECART_URL' ) ) {
+         if ( ! defined( 'KARTLY_VERSION' ) ) {
             define( 'KARTLY_VERSION', self::VERSION );
          }
     }
@@ -150,13 +151,13 @@ final class Woocommerce_Sidecart {
     }
 
     if ( version_compare( $installed_version, '1.0.0', '<' ) ) {
-        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
        
         \WSCART\Kartly_Upgrade_1_10_3::run();
     }
 
     // if ( version_compare( $installed_version, '1.10.0', '<' ) ) {
-    //     require_once WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/class-upgrade-1-10-0.php';
+    //     require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/class-upgrade-1-10-0.php';
     //     WSCart_Upgrade_1_10_0::run();
     // }
 
@@ -187,12 +188,12 @@ public function kartly_version_notice() {
      * Load required plugin classes
      */
     private function load_classes() {
-        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/side_cart_body.php';
-        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/enqueue.php';
-        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/query.php';
-        require_once WOOCOMMERCE_SIDECART_PATH . 'includes/ajax.php';
-        require_once WOOCOMMERCE_SIDECART_PATH . 'admin/admin.php';
-        require_once WOOCOMMERCE_SIDECART_PATH . 'admin/admin-ajax.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/side_cart_body.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/enqueue.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/query.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/ajax.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'admin/admin.php';
+        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'admin/admin-ajax.php';
 
 
         // Initialize plugin components
@@ -207,4 +208,4 @@ public function kartly_version_notice() {
 }
 
 // Initialize the plugin
-Woocommerce_Sidecart::get_instance();
+Kartly_Woocommerce_Sidecart::get_instance();

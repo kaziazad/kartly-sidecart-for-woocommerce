@@ -32,12 +32,9 @@ class Enqueue {
      * Enqueues necessary styles and scripts for the side cart on the frontend.
      */
     public function side_cart_custom_styles() {
-        // Load Font Awesome from CDN
-        // wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', array(), '6.7.2', 'all');
-
-        // wp_enqueue_style('font_awesome', WOOCOMMERCE_SIDECART_URL . 'assets/css/all.min.css', array(),  time(), 'all');
+      
         // Load custom side cart styles
-        wp_enqueue_style('side_cart_id', WOOCOMMERCE_SIDECART_URL . 'assets/css/style.css', array(),  time(), 'all');
+        wp_enqueue_style('side_cart_id', KARTLY_WOOCOMMERCE_SIDECART_URL . 'assets/css/style.css', array(),  time(), 'all');
 
         // Load jQuery (dependency for scripts)
         wp_enqueue_script('jquery');
@@ -46,7 +43,7 @@ class Enqueue {
         // Load custom side cart functionality script
         wp_enqueue_script(
             'sidecart-script',
-            WOOCOMMERCE_SIDECART_URL . 'assets/js/sidecart.js',
+            KARTLY_WOOCOMMERCE_SIDECART_URL . 'assets/js/sidecart.js',
             ['jquery'],
             '1.0.0',
             true
@@ -69,10 +66,10 @@ class Enqueue {
 
          if (isset($_GET['page']) && $_GET['page'] === 'kartly-settings') {
         // Enqueue styles/scripts only for this page
-        wp_enqueue_style('kartly_side_cart_admin_css', WOOCOMMERCE_SIDECART_URL . 'admin/assets/css/admin-css.css', array(), time());
+        wp_enqueue_style('kartly_side_cart_admin_css', KARTLY_WOOCOMMERCE_SIDECART_URL . 'admin/assets/css/admin-css.css', array(), time());
         wp_enqueue_script(
             'sidecart-admin-script',
-            WOOCOMMERCE_SIDECART_URL . 'admin/assets/js/sidcart-admin.js',
+            KARTLY_WOOCOMMERCE_SIDECART_URL . 'admin/assets/js/sidcart-admin.js',
             ['jquery'],
             time(),
             true
