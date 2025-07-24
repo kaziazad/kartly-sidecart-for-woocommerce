@@ -3,7 +3,7 @@
  * Plugin Name:       Kartly Sidecart for Woocommerce 
  * Plugin URI:        https://kazimahmud.com/kartly-sidecart
  * Description:       Kartly Side Cart for WooCommerce adds a modern, dynamic, and fully customizable side cart (mini cart) to your WooCommerce store. Improve your user experience and boost conversion rates by letting customers manage their cart contents instantly—without reloading the page or leaving the product page.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Requires Plugins:  woocommerce
@@ -150,11 +150,11 @@ final class Kartly_Woocommerce_Sidecart {
         return;
     }
 
-    if ( version_compare( $installed_version, '1.0.0', '<' ) ) {
-        require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
+    // if ( version_compare( $installed_version, '1.0.0', '<' ) ) {
+    //     require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/upgrade-1-10-3.php';
        
-        \WSCART\Kartly_Upgrade_1_10_3::run();
-    }
+    //     \WSCART\Kartly_Upgrade_1_10_3::run();
+    // }
 
     // if ( version_compare( $installed_version, '1.10.0', '<' ) ) {
     //     require_once KARTLY_WOOCOMMERCE_SIDECART_PATH . 'includes/upgrades/class-upgrade-1-10-0.php';
